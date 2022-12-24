@@ -16,7 +16,7 @@ Visibility onBoardingGetStartedTextButton(WidgetRef ref) {
           child: TextButton(
             onPressed: () {},
             style: TextButton.styleFrom(
-              backgroundColor: Constant.onBoardingGetStartedColor,
+              backgroundColor: Constant.primaryColor,
             ),
             child: const Text(
               'Get Started',

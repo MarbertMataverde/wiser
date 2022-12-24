@@ -15,7 +15,6 @@ class Constant {
   static const Color onBoardingColor3 = Color(0xffF5D189);
   static const Color onBoardingActiveDotColor = Color(0xffEFEFEF);
   static const Color onBoardingDotColor = Color(0xFFD1D1D1);
-  static const Color onBoardingGetStartedColor = Color(0xff91A0EA);
 
   // onBoarding title
   static const String onBoardingTitle1 =
@@ -34,5 +33,5 @@ class Constant {
 
   // Wiser colors
   static const Color scaffoldBackgroundColor = Color(0xff4C36ED);
-  static const Color primaryColor = Color(0xff2C14DD);
+  static const Color primaryColor = Color(0xff91A0EA);
 }
