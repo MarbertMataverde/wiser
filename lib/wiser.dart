@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:wiser/features/onboarding/view/view_onboarding.dart';
+import 'package:wiser/features/settings/theme/theme.dart';
 
 class WiserApp extends StatelessWidget {
   const WiserApp({super.key});
@@ -7,9 +9,9 @@ class WiserApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Wiser - Your budget buddy anywhere!',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      debugShowCheckedModeBanner: false,
+      theme: wiserThemeData,
+      themeMode: ThemeMode.system,
       home: const WiserHome(),
     );
   }
@@ -20,10 +22,6 @@ class WiserHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text('Wiser Home'),
-      ),
-    );
+    return Onboarding();
   }
 }
