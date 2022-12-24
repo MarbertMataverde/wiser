@@ -1,16 +1,3 @@
-# wiser
+# <center>Wiser</Center>
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Wiser your budget buddy anywhere is an intuitive budgeting app that helps you track your expenses, create and stick to a budget, and make smarter financial decisions. With its easy-to-use interface and powerful tools, you can get a clear overview of your spending habits, set and track your financial goals, and make informed choices about how you spend your money. Whether you're a seasoned budgeter or just starting to take control of your finances, Wiser is the perfect companion to help you stay on track and achieve your financial goals.
