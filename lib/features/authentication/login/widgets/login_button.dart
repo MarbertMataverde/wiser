@@ -1,23 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:wiser/core/constant.dart';
 
-Align loginButton({
-  required BuildContext context,
-  required GlobalKey<FormState> formKey,
-}) {
+Align loginButton(
+    {required BuildContext context, required Function()? onPressed}) {
   return Align(
     alignment: Alignment.center,
     child: SizedBox(
       width: double.infinity,
       height: 50,
       child: TextButton(
-        onPressed: () {
-          if (formKey.currentState!.validate()) {
-            // form is valid, proceed with submission
-          } else {
-            // form is invalid, show an error message
-          }
-        },
+        onPressed: onPressed,
         style: TextButton.styleFrom(
           backgroundColor: Theme.of(context).primaryColor,
         ),
