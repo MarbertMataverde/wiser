@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "789994417782",
+    "project_id": "wiser-d49c2",
+    "storage_bucket": "wiser-d49c2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:789994417782:android:813b4c9ef80f3a68713957",
+        "android_client_info": {
+          "package_name": "me.wiser"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "789994417782-nl4btjns8du2i7fb7h51k4qfvjovsec5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB0VuRhNiSe-WTeCyVPF7GbNrQTj66nDwM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "789994417782-nl4btjns8du2i7fb7h51k4qfvjovsec5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
