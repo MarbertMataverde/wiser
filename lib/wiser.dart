@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wiser/features/authentication/login/view/view_login.dart';
 import 'package:wiser/features/onboarding/view/view_onboarding.dart';
 import 'package:wiser/features/settings/theme/theme.dart';
 
@@ -22,6 +23,6 @@ class WiserHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Onboarding();
+    return Login();
   }
 }
