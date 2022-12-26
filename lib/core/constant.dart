@@ -31,7 +31,20 @@ class Constant {
   static const String onBoardingDescription3 =
       'Setup your budget for each categoryso you in control. Track categories you spend the most money on';
 
+  // assets path
+  static const String googleLogoAssetPath = 'assets/images/logo/google.svg';
+  static const String facebookLogoAssetPath = 'assets/images/logo/facebook.svg';
+  static const String envelopeLogoAssetPath = 'assets/images/logo/envelope.svg';
+
   // Wiser colors
-  static const Color scaffoldBackgroundColor = Color(0xff4C36ED);
+  static const Color colorWhite = Colors.white;
+  static Color fillColor = Colors.white.withOpacity(0.5);
   static const Color primaryColor = Color(0xff91A0EA);
+  static const Color scaffoldBackgroundColor = Color(0xffEBEBEB);
+  static const Color bodyColor = Color(0xFF4B4B4B);
+  static const Color errorColor = Color(0xFFEA9191);
+
+  //regex patterm
+  static const regexPatternEmail =
+      r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$";
 }

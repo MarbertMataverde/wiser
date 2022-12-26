@@ -21,7 +21,7 @@ Visibility onBoardingGetStartedTextButton(WidgetRef ref) {
             child: const Text(
               'Get Started',
               style: TextStyle(
-                color: Colors.white,
+                color: Constant.colorWhite,
               ),
             ),
           ),

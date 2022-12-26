@@ -49,6 +49,7 @@ flutter:
 
   assets:
     - assets/images/onboarding/
+    - assets/images/logo/
     - assets/images/
 
   fonts:
