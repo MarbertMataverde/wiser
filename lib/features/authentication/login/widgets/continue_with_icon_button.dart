@@ -3,8 +3,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:wiser/core/constant.dart';
 
 Container continueWithIconButton({
-  required GlobalKey<FormState> formKey,
   required String assetPath,
+  required Function()? onPressed,
 }) {
   return Container(
     decoration: BoxDecoration(
@@ -12,13 +12,7 @@ Container continueWithIconButton({
       borderRadius: BorderRadius.circular(5),
     ),
     child: IconButton(
-      onPressed: () {
-        if (formKey.currentState!.validate()) {
-          // form is valid, proceed with submission
-        } else {
-          // form is invalid, show an error message
-        }
-      },
+      onPressed: onPressed,
       icon: SvgPicture.asset(
         assetPath,
         width: 25,

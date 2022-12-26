@@ -3,6 +3,8 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 import 'package:wiser/core/constant.dart';
+import 'package:wiser/features/authentication/login/services/email_services.dart';
+import 'package:wiser/features/authentication/login/services/google_services.dart';
 import 'package:wiser/features/authentication/login/validator/validator.dart';
 import 'package:wiser/features/authentication/login/widgets/login_widgets.dart';
 
@@ -10,6 +12,8 @@ class Login extends StatelessWidget {
   Login({Key? key}) : super(key: key);
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final TextEditingController email = TextEditingController();
+  final TextEditingController password = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -46,8 +50,10 @@ class Login extends StatelessWidget {
                           // email address textfield
                           loginTextFormField(
                             context: context,
+                            controller: email,
                             hintText: 'Email Adrress',
                             validator: emailValidator,
+                            keyboardType: TextInputType.emailAddress,
                           ),
                           const SizedBox(
                             height: 10,
@@ -55,8 +61,11 @@ class Login extends StatelessWidget {
                           // password textfield
                           loginTextFormField(
                             context: context,
+                            obscureText: true,
+                            controller: password,
                             hintText: 'Password',
                             validator: passwordValidator,
+                            keyboardType: TextInputType.visiblePassword,
                           ),
                         ],
                       ),
@@ -68,7 +77,19 @@ class Login extends StatelessWidget {
                     const SizedBox(
                       height: 20,
                     ),
-                    loginButton(context: context, formKey: _formKey),
+                    loginButton(
+                      context: context,
+                      onPressed: () {
+                        if (_formKey.currentState!.validate()) {
+                          signInWithEmailAndPassword(
+                            email: email.text,
+                            password: password.text,
+                          );
+                        } else {
+                          // form is invalid, show an error message
+                        }
+                      },
+                    ),
                     const SizedBox(
                       height: 50,
                     ),
@@ -80,14 +101,17 @@ class Login extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         continueWithIconButton(
-                            formKey: _formKey,
-                            assetPath: Constant.googleLogoAssetPath),
+                          assetPath: Constant.googleLogoAssetPath,
+                          onPressed: () => signInWithGoogle(),
+                        ),
                         continueWithIconButton(
-                            formKey: _formKey,
-                            assetPath: Constant.facebookLogoAssetPath),
+                          assetPath: Constant.facebookLogoAssetPath,
+                          onPressed: () {},
+                        ),
                         continueWithIconButton(
-                            formKey: _formKey,
-                            assetPath: Constant.envelopeLogoAssetPath),
+                          assetPath: Constant.envelopeLogoAssetPath,
+                          onPressed: () {},
+                        ),
                       ],
                     ),
                   ],
