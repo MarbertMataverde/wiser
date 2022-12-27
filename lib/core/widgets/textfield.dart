@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:wiser/core/constant.dart';
 
-TextFormField loginTextFormField({
+TextFormField textFormField({
   required BuildContext context,
   required String hintText,
   required String? Function(String?)? validator,

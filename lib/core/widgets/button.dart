@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:wiser/core/constant.dart';
 
-Align loginButton(
-    {required BuildContext context, required Function()? onPressed}) {
+Align button({
+  required BuildContext context,
+  required Function()? onPressed,
+  required String label,
+}) {
   return Align(
     alignment: Alignment.center,
     child: SizedBox(
@@ -16,9 +19,9 @@ Align loginButton(
           backgroundColor: MaterialStateColor.resolveWith(
               (states) => Theme.of(context).primaryColor),
         ),
-        child: const Text(
-          'LOGIN',
-          style: TextStyle(
+        child: Text(
+          label,
+          style: const TextStyle(
             color: Constant.colorWhite,
             fontWeight: FontWeight.bold,
           ),

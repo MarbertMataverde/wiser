@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
 class Constant {
+  // page content padding
+  static const EdgeInsetsGeometry pagePadding =
+      EdgeInsets.symmetric(vertical: 30, horizontal: 20);
+
   // OnBoarding images path
   static const String onBoardingAssetImagePath1 =
       'assets/images/onboarding/onboardingAsset1.png';
@@ -41,6 +45,17 @@ class Constant {
       'Sorry, you have exceeded the maximum number of requests allowed for this application. Please try again later or contact the support team for assistance.';
   static const String networkRequestFailedMessage =
       'We apologize, but it looks like you are currently not connected to the internet. Please check your internet connection and try again.';
+  static const String authUserNotFoundMessage =
+      '[firebase_auth/user-not-found] There is no user record corresponding to this identifier. The user may have been deleted.';
+  static const String emailNotRegistered =
+      'Sorry, the email you provided is not registered in our system. Please double check the email and try again or register a new account.';
+  static const String authNetworkErrorMessage =
+      '[firebase_auth/network-request-failed] A network error (such as timeout, interrupted connection or unreachable host) has occurred.';
+  static const String somethingWentWrongMessage =
+      'Something seems to be off. Please try again or contact our support team for assistance.';
+  static const String resetPasswordMailSentMessage =
+      'We have sent you an email with instructions on how to reset your password. Please check your inbox and follow the steps to reset your password. If you do not receive the email, please check your spam or junk folder.';
+
   // assets path
   static const String googleLogoAssetPath = 'assets/images/logo/google.svg';
   static const String facebookLogoAssetPath = 'assets/images/logo/facebook.svg';
@@ -48,7 +63,7 @@ class Constant {
   static const String alertIconAssetPath = 'assets/images/alert_icon.riv';
   static const String animatedShapesAssetPath =
       'assets/images/animated_shapes.riv';
-
+  static const String animatedDoneAssetPath = 'assets/images/done.riv';
   // Wiser colors
   static const Color colorWhite = Colors.white;
   static Color fillColor = Colors.white.withOpacity(0.5);
@@ -56,6 +71,7 @@ class Constant {
   static const Color scaffoldBackgroundColor = Color(0xffEBEBEB);
   static const Color bodyColor = Color(0xFF4B4B4B);
   static const Color errorColor = Color(0xFFEA9191);
+  static Color overlayColor = const Color(0xff91A0EA).withOpacity(0.20);
 
   //regex patterm
   static const regexPatternEmail =
