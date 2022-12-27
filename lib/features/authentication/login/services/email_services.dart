@@ -1,10 +1,9 @@
 import 'dart:async';
-import 'dart:developer';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:wiser/core/constant.dart';
-import 'package:wiser/core/dialog.dart';
+import 'package:wiser/core/widgets/dialog.dart';
 
 Future<void> signInWithEmailAndPassword({
   required BuildContext context,

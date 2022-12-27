@@ -3,11 +3,13 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 import 'package:wiser/core/constant.dart';
-import 'package:wiser/core/dialog.dart';
+import 'package:wiser/core/widgets/dialog.dart';
 import 'package:wiser/features/authentication/login/services/email_services.dart';
 import 'package:wiser/features/authentication/login/services/google_services.dart';
 import 'package:wiser/features/authentication/login/validator/validator.dart';
 import 'package:wiser/features/authentication/login/widgets/login_widgets.dart';
+import 'package:wiser/features/authentication/reset_password/model/user.dart';
+import 'package:wiser/features/authentication/reset_password/view/view_reset_password.dart';
 
 class Login extends StatelessWidget {
   Login({Key? key}) : super(key: key);
@@ -35,8 +37,7 @@ class Login extends StatelessWidget {
           SingleChildScrollView(
             child: SafeArea(
               child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
+                padding: Constant.pagePadding,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -49,10 +50,10 @@ class Login extends StatelessWidget {
                       child: Column(
                         children: [
                           // email address textfield
-                          loginTextFormField(
+                          textFormField(
                             context: context,
                             controller: email,
-                            hintText: 'Email Adrress',
+                            hintText: 'Email Address',
                             validator: emailValidator,
                             keyboardType: TextInputType.emailAddress,
                           ),
@@ -60,7 +61,7 @@ class Login extends StatelessWidget {
                             height: 10,
                           ),
                           // password textfield
-                          loginTextFormField(
+                          textFormField(
                             context: context,
                             obscureText: true,
                             controller: password,
@@ -79,12 +80,21 @@ class Login extends StatelessWidget {
                     const SizedBox(
                       height: 3,
                     ),
-                    resetPassword(context: context),
+                    resetPassword(
+                      context: context,
+                      onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ResetPassword(),
+                        ),
+                      ),
+                    ),
                     const SizedBox(
                       height: 20,
                     ),
-                    loginButton(
+                    button(
                       context: context,
+                      label: 'LOGIN',
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
                           signInWithEmailAndPassword(

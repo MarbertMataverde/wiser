@@ -13,7 +13,7 @@ class WiserApp extends StatelessWidget {
       title: 'Wiser - Your budget buddy anywhere!',
       debugShowCheckedModeBanner: false,
       theme: wiserThemeData,
-      themeMode: ThemeMode.dark,
+      themeMode: ThemeMode.light,
       home: const WiserHome(),
     );
   }
