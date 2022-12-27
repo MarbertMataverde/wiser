@@ -31,10 +31,23 @@ class Constant {
   static const String onBoardingDescription3 =
       'Setup your budget for each categoryso you in control. Track categories you spend the most money on';
 
+  static const String wrongPasswordMessage =
+      'Sorry, that password is incorrect. Please try again or click \'Forgot Password\' to reset your password.';
+  static const String userNotFoundMessage =
+      'Sorry, we were unable to find an account with the provided information. Please double check your login credentials and try again. If you are having trouble accessing your account, you can try resetting your password or contacting our support team for assistance.';
+  static const String userDisabledMessage =
+      'Unfortunately, your account has been disabled by the application administrator. If you believe this is a mistake or have any questions, please contact the administrator for further assistance. Thank you for your understanding.';
+  static const String tooManyRequestMessage =
+      'Sorry, you have exceeded the maximum number of requests allowed for this application. Please try again later or contact the support team for assistance.';
+  static const String networkRequestFailedMessage =
+      'We apologize, but it looks like you are currently not connected to the internet. Please check your internet connection and try again.';
   // assets path
   static const String googleLogoAssetPath = 'assets/images/logo/google.svg';
   static const String facebookLogoAssetPath = 'assets/images/logo/facebook.svg';
   static const String envelopeLogoAssetPath = 'assets/images/logo/envelope.svg';
+  static const String alertIconAssetPath = 'assets/images/alert_icon.riv';
+  static const String animatedShapesAssetPath =
+      'assets/images/animated_shapes.riv';
 
   // Wiser colors
   static const Color colorWhite = Colors.white;

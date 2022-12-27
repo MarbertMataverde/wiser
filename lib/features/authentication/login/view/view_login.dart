@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 import 'package:wiser/core/constant.dart';
+import 'package:wiser/core/dialog.dart';
 import 'package:wiser/features/authentication/login/services/email_services.dart';
 import 'package:wiser/features/authentication/login/services/google_services.dart';
 import 'package:wiser/features/authentication/login/validator/validator.dart';
@@ -21,7 +22,7 @@ class Login extends StatelessWidget {
       body: Stack(
         children: [
           const RiveAnimation.asset(
-            'assets/images/animated_shapes.riv',
+            Constant.animatedShapesAssetPath,
             alignment: Alignment.bottomCenter,
           ),
           BackdropFilter(
@@ -64,7 +65,12 @@ class Login extends StatelessWidget {
                             obscureText: true,
                             controller: password,
                             hintText: 'Password',
-                            validator: passwordValidator,
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return 'Please enter an password';
+                              }
+                              return null;
+                            },
                             keyboardType: TextInputType.visiblePassword,
                           ),
                         ],
@@ -82,6 +88,7 @@ class Login extends StatelessWidget {
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
                           signInWithEmailAndPassword(
+                            context: context,
                             email: email.text,
                             password: password.text,
                           );

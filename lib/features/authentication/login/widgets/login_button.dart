@@ -10,8 +10,11 @@ Align loginButton(
       height: 50,
       child: TextButton(
         onPressed: onPressed,
-        style: TextButton.styleFrom(
-          backgroundColor: Theme.of(context).primaryColor,
+        style: ButtonStyle(
+          overlayColor: MaterialStateColor.resolveWith(
+              (states) => Constant.fillColor.withOpacity(0.10)),
+          backgroundColor: MaterialStateColor.resolveWith(
+              (states) => Theme.of(context).primaryColor),
         ),
         child: const Text(
           'LOGIN',
