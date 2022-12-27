@@ -14,12 +14,10 @@ final ThemeData wiserThemeData = ThemeData.light().copyWith(
       ),
   textButtonTheme: TextButtonThemeData(
     style: ButtonStyle(
-      overlayColor: MaterialStateColor.resolveWith(
-          (states) => Constant.primaryColor.withOpacity(0.20)),
+      overlayColor:
+          MaterialStateColor.resolveWith((states) => Constant.overlayColor),
       textStyle: MaterialStateProperty.resolveWith<TextStyle?>(
-        ((states) => const TextStyle(
-              color: Constant.colorWhite,
-            )),
+        ((states) => const TextStyle(color: Constant.colorWhite)),
       ),
     ),
   ),

@@ -6,6 +6,7 @@ Future<dynamic> showCustomDialog({
   required BuildContext context,
   required String title,
   required String content,
+  String? assetPath, // default: notice animated icon
   String? buttonLeftText,
   String? buttonRightText,
   bool? isTwoButton = false,
@@ -23,11 +24,11 @@ Future<dynamic> showCustomDialog({
           children: [
             Row(
               children: [
-                const SizedBox(
+                SizedBox(
                   height: 30,
                   width: 30,
                   child: RiveAnimation.asset(
-                    Constant.alertIconAssetPath,
+                    assetPath ?? Constant.alertIconAssetPath,
                   ),
                 ),
                 const SizedBox(
