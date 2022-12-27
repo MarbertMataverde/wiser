@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 
-GestureDetector resetPassword({required BuildContext context}) {
+GestureDetector resetPassword({
+  required BuildContext context,
+  required Function()? onTap,
+}) {
   return GestureDetector(
-    onTap: () {},
+    onTap: onTap,
     child: Align(
       alignment: Alignment.centerRight,
       child: Text(
