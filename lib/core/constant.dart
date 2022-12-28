@@ -57,6 +57,9 @@ class Constant {
       'We have sent you an email with instructions on how to reset your password. Please check your inbox and follow the steps to reset your password. If you do not receive the email, please check your spam or junk folder.';
   static const String resetPasswordSubtitleMessage =
       'Resetting your password is easy! Just follow the instructions we\'ll send you via email to get back into your account.';
+  static const String createAccountSubtitleMessage =
+      'Create an account to start budgeting with Wiser today!';
+
   // assets path
   static const String googleLogoAssetPath = 'assets/images/logo/google.svg';
   static const String facebookLogoAssetPath = 'assets/images/logo/facebook.svg';

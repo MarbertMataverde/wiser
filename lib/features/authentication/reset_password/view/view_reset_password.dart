@@ -1,9 +1,9 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:wiser/core/constant.dart';
 import 'package:wiser/core/validator/validator.dart';
+import 'package:wiser/core/widgets/arrow_left_button.dart';
+import 'package:wiser/core/widgets/single_line_title_text.dart';
 import 'package:wiser/features/authentication/login/widgets/login_widgets.dart';
 import 'package:wiser/features/authentication/reset_password/services/reset_password_services.dart';
 
@@ -19,16 +19,7 @@ class ResetPassword extends StatelessWidget {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
-        leading: IconButton(
-          onPressed: () => Navigator.pop(context),
-          iconSize: 30,
-          splashRadius: 25,
-          highlightColor: Constant.overlayColor,
-          icon: Icon(
-            Iconsax.arrow_left,
-            color: Theme.of(context).primaryColor,
-          ),
-        ),
+        leading: arrowLeftButton(context),
       ),
       body: SafeArea(
         child: Padding(
@@ -36,17 +27,7 @@ class ResetPassword extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              FittedBox(
-                child: Text(
-                  'Reset Password',
-                  style: TextStyle(
-                    height: 1,
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                    color: Theme.of(context).primaryColor,
-                  ),
-                ),
-              ),
+              singleLineTitleText(context: context, title: 'Reset Password'),
               const Text(
                 Constant.resetPasswordSubtitleMessage,
               ),
