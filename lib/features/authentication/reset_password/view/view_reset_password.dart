@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:wiser/core/constant.dart';
 import 'package:wiser/core/riverpod/riverpod.dart';
 import 'package:wiser/core/validator/validator.dart';
