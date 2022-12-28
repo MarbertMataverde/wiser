@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:liquid_swipe/liquid_swipe.dart';
-import 'package:wiser/features/onboarding/riverpod/riverpod.dart';
+import 'package:wiser/core/riverpod/riverpod.dart';
 
 Widget onBoardingSkipTextButton(WidgetRef ref,
     {required LiquidController liquidController}) {
   return Visibility(
-    visible: ref.watch(initialPageProviderState) == 2 ? false : true,
+    visible: ref.watch(onBoardingInitialPageProviderState) == 2 ? false : true,
     child: Align(
       alignment: Alignment.topRight,
       child: Padding(
@@ -18,7 +18,9 @@ Widget onBoardingSkipTextButton(WidgetRef ref,
           ),
           onPressed: () {
             liquidController.animateToPage(page: 2);
-            ref.read(initialPageProviderState.notifier).update((state) => 2);
+            ref
+                .read(onBoardingInitialPageProviderState.notifier)
+                .update((state) => 2);
           },
           child: Text(
             'Skip',

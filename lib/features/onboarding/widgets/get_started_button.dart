@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:wiser/core/constant.dart';
-import 'package:wiser/features/onboarding/riverpod/riverpod.dart';
+import 'package:wiser/core/riverpod/riverpod.dart';
 
 Visibility onBoardingGetStartedTextButton(WidgetRef ref) {
   return Visibility(
-    visible: ref.watch(initialPageProviderState) == 2 ? true : false,
+    visible: ref.watch(onBoardingInitialPageProviderState) == 2 ? true : false,
     child: Padding(
       padding: const EdgeInsets.only(bottom: 80),
       child: Align(

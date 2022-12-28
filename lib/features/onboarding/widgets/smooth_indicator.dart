@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:wiser/core/constant.dart';
-import 'package:wiser/features/onboarding/riverpod/riverpod.dart';
+import 'package:wiser/core/riverpod/riverpod.dart';
 
 Padding onBoardingSmoothIndicator(WidgetRef ref) {
   return Padding(
@@ -10,7 +10,7 @@ Padding onBoardingSmoothIndicator(WidgetRef ref) {
     child: Align(
       alignment: Alignment.bottomCenter,
       child: AnimatedSmoothIndicator(
-        activeIndex: ref.watch(initialPageProviderState),
+        activeIndex: ref.watch(onBoardingInitialPageProviderState),
         count: 3,
         effect: const ExpandingDotsEffect(
           dotColor: Constant.onBoardingDotColor,

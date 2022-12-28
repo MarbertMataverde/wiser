@@ -1,8 +1,11 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:rive/rive.dart';
 import 'package:wiser/core/constant.dart';
+import 'package:wiser/core/riverpod/riverpod.dart';
+import 'package:wiser/core/widgets/loading_animation.dart';
 import 'package:wiser/features/authentication/create/view/view_create_account.dart';
 import 'package:wiser/features/authentication/login/services/email_services.dart';
 import 'package:wiser/features/authentication/login/services/google_services.dart';
@@ -23,7 +26,7 @@ class Login extends StatelessWidget {
       body: Stack(
         children: [
           const RiveAnimation.asset(
-            Constant.animatedShapesAssetPath,
+            Constant.shapesAssetPath,
             alignment: Alignment.bottomCenter,
           ),
           BackdropFilter(
@@ -91,21 +94,32 @@ class Login extends StatelessWidget {
                     const SizedBox(
                       height: 20,
                     ),
-                    button(
-                      context: context,
-                      label: 'LOGIN',
-                      onPressed: () {
-                        if (_formKey.currentState!.validate()) {
-                          signInWithEmailAndPassword(
-                            context: context,
-                            email: email.text,
-                            password: password.text,
-                          );
-                        } else {
-                          // form is invalid, show an error message
-                        }
-                      },
-                    ),
+                    Consumer(builder:
+                        (BuildContext context, WidgetRef ref, Widget? child) {
+                      final isLoading = ref.watch(authenticatingStateProvider);
+                      return isLoading
+                          ? loadingAnimation()
+                          : button(
+                              context: context,
+                              label: 'LOGIN',
+                              onPressed: () async {
+                                if (_formKey.currentState!.validate()) {
+                                  ref
+                                      .read(
+                                          authenticatingStateProvider.notifier)
+                                      .update((state) => !isLoading);
+                                  await signInWithEmailAndPassword(
+                                    context: context,
+                                    email: email.text,
+                                    password: password.text,
+                                  );
+                                  ref.invalidate(authenticatingStateProvider);
+                                } else {
+                                  // form is invalid, show an error message
+                                }
+                              },
+                            );
+                    }),
                     const SizedBox(
                       height: 50,
                     ),
