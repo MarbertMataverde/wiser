@@ -136,7 +136,16 @@ class Login extends StatelessWidget {
                         ),
                         continueWithIconButton(
                           assetPath: Constant.facebookLogoAssetPath,
-                          onPressed: () {},
+                          onPressed: () {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                backgroundColor: Theme.of(context).primaryColor,
+                                behavior: SnackBarBehavior.floating,
+                                content:
+                                    const Text('Feature not yet implemented'),
+                              ),
+                            );
+                          },
                         ),
                         continueWithIconButton(
                           assetPath: Constant.envelopeLogoAssetPath,
