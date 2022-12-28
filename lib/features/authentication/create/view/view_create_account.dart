@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:wiser/core/constant.dart';
+import 'package:wiser/core/riverpod/riverpod.dart';
 import 'package:wiser/core/validator/validator.dart';
 import 'package:wiser/core/widgets/arrow_left_button.dart';
+import 'package:wiser/core/widgets/loading_animation.dart';
 import 'package:wiser/core/widgets/single_line_title_text.dart';
 import 'package:wiser/features/authentication/create/services/create_account_services.dart';
 import 'package:wiser/features/authentication/login/widgets/login_widgets.dart';
@@ -128,20 +130,30 @@ class CreateAccount extends StatelessWidget {
                 const SizedBox(
                   height: 20,
                 ),
-                button(
-                    context: context,
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        createAccount(
-                            context: context,
-                            email: email.text,
-                            password: password.text,
-                            fullName: fullName.text);
-                      } else {
-                        // form is invalid, show an error message
-                      }
-                    },
-                    label: 'SUBMIT')
+                Consumer(builder:
+                    (BuildContext context, WidgetRef ref, Widget? child) {
+                  final isLoading = ref.watch(authenticatingStateProvider);
+                  return isLoading
+                      ? loadingAnimation()
+                      : button(
+                          context: context,
+                          onPressed: () async {
+                            if (_formKey.currentState!.validate()) {
+                              ref
+                                  .read(authenticatingStateProvider.notifier)
+                                  .update((state) => !isLoading);
+                              await createAccount(
+                                  context: context,
+                                  email: email.text,
+                                  password: password.text,
+                                  fullName: fullName.text);
+                              ref.invalidate(authenticatingStateProvider);
+                            } else {
+                              // form is invalid, show an error message
+                            }
+                          },
+                          label: 'SUBMIT');
+                })
               ],
             ),
           ),

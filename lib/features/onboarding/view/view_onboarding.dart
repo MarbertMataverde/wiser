@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:liquid_swipe/liquid_swipe.dart';
 import 'package:wiser/core/constant.dart';
-import 'package:wiser/features/onboarding/riverpod/riverpod.dart';
+import 'package:wiser/core/riverpod/riverpod.dart';
 import 'package:wiser/features/onboarding/widgets/widget.dart';
 
 class Onboarding extends ConsumerWidget {
@@ -23,9 +23,9 @@ class Onboarding extends ConsumerWidget {
               liquidController: liquidController,
               ignoreUserGestureWhileAnimating: true,
               slideIconWidget: const SizedBox(width: 20, height: 20),
-              initialPage: ref.read(initialPageProviderState),
+              initialPage: ref.read(onBoardingInitialPageProviderState),
               onPageChangeCallback: (activePageIndex) => ref
-                  .read(initialPageProviderState.notifier)
+                  .read(onBoardingInitialPageProviderState.notifier)
                   .update((state) => activePageIndex),
             ),
             onBoardingGetStartedTextButton(ref),

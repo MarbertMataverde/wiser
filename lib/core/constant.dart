@@ -36,7 +36,7 @@ class Constant {
       'Setup your budget for each categoryso you in control. Track categories you spend the most money on';
 
   static const String wrongPasswordMessage =
-      'Sorry, that password is incorrect. Please try again or click \'Forgot Password\' to reset your password.';
+      'Sorry, that password is incorrect. Please try again or click \'Reset Password\' to update your password.';
   static const String userNotFoundMessage =
       'Sorry, we were unable to find an account with the provided information. Please double check your login credentials and try again. If you are having trouble accessing your account, you can try resetting your password or contacting our support team for assistance.';
   static const String userDisabledMessage =
@@ -64,10 +64,14 @@ class Constant {
   static const String googleLogoAssetPath = 'assets/images/logo/google.svg';
   static const String facebookLogoAssetPath = 'assets/images/logo/facebook.svg';
   static const String envelopeLogoAssetPath = 'assets/images/logo/envelope.svg';
-  static const String alertIconAssetPath = 'assets/images/alert_icon.riv';
-  static const String animatedShapesAssetPath =
-      'assets/images/animated_shapes.riv';
-  static const String animatedDoneAssetPath = 'assets/images/done.riv';
+  static const String alertIconAssetPath =
+      'assets/images/rive_animation/alert_icon.riv';
+  static const String shapesAssetPath =
+      'assets/images/rive_animation/animated_shapes.riv';
+  static const String doneAssetPath = 'assets/images/rive_animation/done.riv';
+  static const String loadingAssetPath =
+      'assets/images/rive_animation/loading.riv';
+
   // Wiser colors
   static const Color colorWhite = Colors.white;
   static Color fillColor = Colors.white.withOpacity(0.5);

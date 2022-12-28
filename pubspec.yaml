@@ -53,7 +53,7 @@ flutter:
   assets:
     - assets/images/onboarding/
     - assets/images/logo/
-    - assets/images/
+    - assets/images/rive_animation/
 
   fonts:
     - family: Poppins

@@ -14,7 +14,7 @@ Future<void> resetPasswordRequest({
           context: context,
           title: 'Email Sent',
           buttonRightText: 'Thanks, Go back',
-          assetPath: Constant.animatedDoneAssetPath,
+          assetPath: Constant.doneAssetPath,
           content: Constant.resetPasswordMailSentMessage,
           buttonRightVoidCallback: () => Navigator.popUntil(
             context,
