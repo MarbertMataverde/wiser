@@ -3,6 +3,9 @@ import 'package:wiser/core/constant.dart';
 
 final ThemeData wiserThemeData = ThemeData.light().copyWith(
   scaffoldBackgroundColor: Constant.scaffoldBackgroundColor,
+  colorScheme: ThemeData().colorScheme.copyWith(
+        primary: Constant.primaryColor,
+      ),
   primaryColor: Constant.primaryColor,
   errorColor: Constant.errorColor,
   textTheme: ThemeData.light().textTheme.apply(

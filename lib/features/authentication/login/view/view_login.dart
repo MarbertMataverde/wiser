@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 import 'package:wiser/core/constant.dart';
+import 'package:wiser/features/authentication/create/view/view_create_account.dart';
 import 'package:wiser/features/authentication/login/services/email_services.dart';
 import 'package:wiser/features/authentication/login/services/google_services.dart';
 import 'package:wiser/core/validator/validator.dart';
@@ -125,7 +126,12 @@ class Login extends StatelessWidget {
                         ),
                         continueWithIconButton(
                           assetPath: Constant.envelopeLogoAssetPath,
-                          onPressed: () {},
+                          onPressed: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => CreateAccount(),
+                            ),
+                          ),
                         ),
                       ],
                     ),

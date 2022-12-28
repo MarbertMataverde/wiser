@@ -1,5 +1,25 @@
 import 'package:wiser/core/constant.dart';
 
+String? fullNameValidator(value) {
+  if (value!.isEmpty) {
+    return 'Please enter your full name';
+  }
+  if (value.toString().length <= 8) {
+    return 'Full name cant be less than 8';
+  }
+  return null;
+}
+
+String? emailValidator(value) {
+  if (value!.isEmpty) {
+    return 'Please enter an email';
+  }
+  if (!RegExp(Constant.regexPatternEmail).hasMatch(value)) {
+    return 'Please enter a valid email';
+  }
+  return null;
+}
+
 String? passwordValidator(value) {
   if (value!.isEmpty) {
     return 'Please enter an password';
@@ -17,12 +37,6 @@ String? passwordValidator(value) {
   return null;
 }
 
-String? emailValidator(value) {
-  if (value!.isEmpty) {
-    return 'Please enter an email';
-  }
-  if (!RegExp(Constant.regexPatternEmail).hasMatch(value)) {
-    return 'Please enter a valid email';
-  }
-  return null;
+String? passwordEqualityValidator() {
+  return 'Please make sure your passwords match.';
 }
