@@ -59,6 +59,8 @@ class Constant {
       'Resetting your password is easy! Just follow the instructions we\'ll send you via email to get back into your account.';
   static const String createAccountSubtitleMessage =
       'Create an account to start budgeting with Wiser today!';
+  static const String createAccountSuccessMessage =
+      'Your account has been successfully created! You can now log in to your account.';
 
   // assets path
   static const String googleLogoAssetPath = 'assets/images/logo/google.svg';
