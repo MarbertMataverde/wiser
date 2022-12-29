@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:wiser/core/constant.dart';
 import 'package:wiser/core/widgets/dialog.dart';
+import 'package:wiser/features/authentication/login/services/sign_out_services.dart';
 
 Future<void> createAccount({
   required BuildContext context,
@@ -18,7 +19,17 @@ Future<void> createAccount({
     (value) async {
       await FirebaseAuth.instance.currentUser!
           .updateDisplayName(fullName)
-          .then((value) => Navigator.pop(context));
+          .then((value) => Navigator.pop(context))
+          .whenComplete(() async {
+        showCustomDialog(
+          context: context,
+          title: 'Success',
+          assetPath: Constant.doneAssetPath,
+          content: Constant.createAccountSuccessMessage,
+        );
+        // Prevents immediate access to the dashboard.
+        await signOut();
+      });
     },
   ).catchError((error) {
     if (error.toString() == Constant.authNetworkErrorMessage) {

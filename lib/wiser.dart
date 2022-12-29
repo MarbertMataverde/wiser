@@ -32,7 +32,7 @@ class WiserHome extends StatelessWidget {
         } else if (snapshot.hasError) {
           return Container(); // restart the app message
         } else if (snapshot.hasData) {
-          return DashBoard(); // home screen
+          return Dashboard(); // home screen
         } else {
           return Login();
         }
