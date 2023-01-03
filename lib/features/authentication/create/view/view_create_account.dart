@@ -13,7 +13,7 @@ import 'package:wiser/features/authentication/login/widgets/login_widgets.dart';
 class CreateAccount extends StatelessWidget {
   CreateAccount({Key? key}) : super(key: key);
 
-  final TextEditingController fullName = TextEditingController();
+  final TextEditingController nickName = TextEditingController();
   final TextEditingController email = TextEditingController();
   final TextEditingController password = TextEditingController();
   final TextEditingController confirmPassword = TextEditingController();
@@ -48,8 +48,8 @@ class CreateAccount extends StatelessWidget {
                     children: [
                       textFormField(
                         context: context,
-                        controller: fullName,
-                        hintText: 'Fullname',
+                        controller: nickName,
+                        hintText: 'Nickname',
                         keyboardType: TextInputType.text,
                         validator: (value) => fullNameValidator(value),
                       ),
@@ -146,7 +146,7 @@ class CreateAccount extends StatelessWidget {
                                   context: context,
                                   email: email.text,
                                   password: password.text,
-                                  fullName: fullName.text);
+                                  fullName: nickName.text);
                               ref.invalidate(authenticatingStateProvider);
                             } else {
                               // form is invalid, show an error message

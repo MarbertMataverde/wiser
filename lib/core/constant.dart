@@ -80,8 +80,24 @@ class Constant {
   static const Color primaryColor = Color(0xff91A0EA);
   static const Color scaffoldBackgroundColor = Color(0xffEBEBEB);
   static const Color bodyColor = Color(0xFF4B4B4B);
+  static const Color greyColor = Color.fromARGB(255, 186, 186, 186);
   static const Color errorColor = Color(0xFFEA9191);
+  static const Color greenColor = Color.fromARGB(255, 110, 214, 141);
+  static const Color redColor = Color.fromARGB(255, 234, 135, 135);
   static Color overlayColor = const Color(0xff91A0EA).withOpacity(0.20);
+
+  // Category Colors
+  static const Color foodAndDrinksCategoryColor = Color(0xFFFFB444);
+  static const Color shoppingCategoryColor = Color(0xFF44DAFF);
+  static const Color housingCategoryColor = Color(0xFFFF4A44);
+  static const Color transportationCategoryColor = Color(0xFF727272);
+  static const Color vehicleCategoryColor = Color(0xFF6644FF);
+  static const Color lifeAndEntertainmentCategoryColor = Color(0xFF44FF7C);
+  static const Color communicationPCCategoryColor = Color(0xFF4744FF);
+  static const Color financialExpensesCategoryColor = Color(0xFFBF2525);
+  static const Color invesmentsCategoryColor = Color(0xFFAC1EAA);
+  static const Color incomeCategoryColor = Color(0xFF36C640);
+  static const Color othersCategoryColor = Color(0xFF3A3A3A);
 
   //regex patterm
   static const regexPatternEmail =
