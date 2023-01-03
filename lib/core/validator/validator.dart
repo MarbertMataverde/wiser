@@ -2,10 +2,10 @@ import 'package:wiser/core/constant.dart';
 
 String? fullNameValidator(value) {
   if (value!.isEmpty) {
-    return 'Please enter your full name';
+    return 'What do you want to be called?';
   }
-  if (value.toString().length <= 8) {
-    return 'Full name cant be less than 8';
+  if (value.toString().length <= 3) {
+    return 'Nickname too short.';
   }
   return null;
 }
@@ -39,4 +39,11 @@ String? passwordValidator(value) {
 
 String? passwordEqualityValidator() {
   return 'Please make sure your passwords match.';
+}
+
+String? newTransactionAmountValidator(value) {
+  if (value!.isEmpty) {
+    return 'Please enter an amount';
+  }
+  return null;
 }

@@ -5,38 +5,52 @@ import 'package:wiser/core/constant.dart';
 
 final passwordVisibilityStateProvider = StateProvider<bool>((ref) => true);
 
-TextFormField textFormField(
-    {required BuildContext context,
-    required String hintText,
-    required String? Function(String?)? validator,
-    required TextEditingController controller,
-    TextInputType? keyboardType,
-    List<TextInputFormatter>? inputFormater,
-    bool? obscureText,
-    IconData? suffixIcon,
-    Function()? suffixIconOnPressed}) {
+TextFormField textFormField({
+  required BuildContext context,
+  required String hintText,
+  String? Function(String?)? validator,
+  required TextEditingController controller,
+  TextInputType? keyboardType,
+  List<TextInputFormatter>? inputFormater,
+  bool? obscureText,
+  IconData? suffixIcon,
+  bool isHintCentered = false,
+  TextStyle? customTextStyle,
+  Color? customCursorColor,
+  Color? customHintColor,
+  int? customMaxLine,
+  Function()? suffixIconOnPressed,
+  Function(String)? onChanged,
+}) {
   return TextFormField(
-    style: TextStyle(
-      color: Theme.of(context).primaryColor,
-      fontWeight: FontWeight.w500,
-    ),
-    cursorColor: Theme.of(context).primaryColor,
+    textAlign: isHintCentered ? TextAlign.center : TextAlign.start,
+    maxLines: customMaxLine ?? 1,
+    onChanged: validator,
+    style: customTextStyle ??
+        TextStyle(
+          color: Theme.of(context).primaryColor,
+          fontWeight: FontWeight.w500,
+        ),
+    cursorColor: customCursorColor ?? Theme.of(context).primaryColor,
     controller: controller,
     validator: validator,
     obscureText: obscureText ?? false,
     inputFormatters: inputFormater,
     keyboardType: keyboardType,
     decoration: InputDecoration(
-      suffixIcon: IconButton(
-        onPressed: suffixIconOnPressed,
-        icon: Icon(suffixIcon),
-        splashRadius: 25,
-      ),
+      suffixIcon: isHintCentered
+          ? null
+          : GestureDetector(
+              onTap: suffixIconOnPressed,
+              child: Icon(suffixIcon),
+            ),
       filled: true,
       fillColor: Constant.fillColor,
       hintText: hintText,
-      hintStyle:
-          TextStyle(color: Theme.of(context).primaryColor.withOpacity(0.6)),
+      hintStyle: TextStyle(
+        color:
+            customHintColor ?? Theme.of(context).primaryColor.withOpacity(0.6),
+      ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(5),
         borderSide: BorderSide.none,

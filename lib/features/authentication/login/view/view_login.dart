@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:rive/rive.dart';
 import 'package:wiser/core/constant.dart';
 import 'package:wiser/core/riverpod/riverpod.dart';
@@ -63,19 +64,33 @@ class Login extends StatelessWidget {
                             height: 10,
                           ),
                           // password textfield
-                          textFormField(
-                            context: context,
-                            obscureText: true,
-                            controller: password,
-                            hintText: 'Password',
-                            validator: (value) {
-                              if (value!.isEmpty) {
-                                return 'Please enter an password';
-                              }
-                              return null;
-                            },
-                            keyboardType: TextInputType.visiblePassword,
-                          ),
+                          Consumer(builder: (BuildContext context,
+                              WidgetRef ref, Widget? child) {
+                            bool isPasswordHidden =
+                                ref.watch(passwordVisibilityStateProvider);
+                            return textFormField(
+                              context: context,
+                              obscureText: isPasswordHidden,
+                              controller: password,
+                              hintText: 'Password',
+                              suffixIcon: isPasswordHidden
+                                  ? Iconsax.eye_slash
+                                  : Iconsax.eye,
+                              suffixIconOnPressed: () {
+                                ref
+                                    .read(passwordVisibilityStateProvider
+                                        .notifier)
+                                    .update((state) => !isPasswordHidden);
+                              },
+                              validator: (value) {
+                                if (value!.isEmpty) {
+                                  return 'Please enter an password';
+                                }
+                                return null;
+                              },
+                              keyboardType: TextInputType.visiblePassword,
+                            );
+                          }),
                         ],
                       ),
                     ),
