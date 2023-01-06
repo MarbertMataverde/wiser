@@ -5,7 +5,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:wiser/core/constant/core_constant.dart';
 import 'package:wiser/core/validator/validator.dart';
+import 'package:wiser/core/widgets/core_appbar_widget.dart';
 import 'package:wiser/core/widgets/core_button_widget.dart';
+import 'package:wiser/core/widgets/core_icon_button_widget.dart';
 import 'package:wiser/core/widgets/core_textfield_widget.dart';
 import 'package:wiser/features/record/view/category_view.dart';
 
@@ -48,36 +50,24 @@ class _NewRecordState extends ConsumerState<NewRecordView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: coreAppBarWidget(
+        ref: ref,
+        context: context,
+        isWrapperAppbar: false,
+        nonPageWrapperAppbarTitle: 'New Record',
+        leadingWidget: coreIconButtonWidget(
+          actionsOnPressed: () => Navigator.pop(context),
+          iconData: Iconsax.arrow_left,
+        ),
+        actionsOnPressed: () {},
+      ),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.only(top: 30, left: 20, right: 20),
+          padding: CoreConstant.pageHorizontalPadding,
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Align(
-                  alignment: Alignment.topRight,
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
-                    child: const Icon(Iconsax.close_circle),
-                  ),
-                ),
-                const Text(
-                  'New Record',
-                  textScaleFactor: 1.5,
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                const Text(
-                  'Select record type',
-                  textScaleFactor: 0.9,
-                ),
                 transactionTypeBar(ref: ref),
                 const SizedBox(
                   height: 20,

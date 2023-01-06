@@ -1,7 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
-import 'package:wiser/features/authentication/login/services/sign_out_services.dart';
 
 Row dashboardHeadingWidget({required User? user}) {
   return Row(
@@ -24,12 +22,6 @@ Row dashboardHeadingWidget({required User? user}) {
             ),
           ),
         ],
-      ),
-      GestureDetector(
-        onTap: () {
-          signOut();
-        },
-        child: const Icon(Iconsax.setting),
       ),
     ],
   );

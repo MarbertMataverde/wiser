@@ -2,12 +2,17 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:wiser/core/constant/core_constant.dart';
+import 'package:wiser/core/widgets/core_appbar_widget.dart';
 
 import 'package:wiser/features/pageview/widgets/pageview_bottom_navigation_bar_widget.dart';
 import 'package:wiser/features/pageview/widgets/pageview_bottom_navigation_bar_item_widget.dart';
 import 'package:wiser/features/pageview/widgets/pageview_page_list_widget.dart';
 
-final initialNavBarItemIdexStateProvider = StateProvider((ref) => 0);
+final initialNavBarItemIdexStateProvider = StateProvider<int>((ref) => 0);
+
+final initialAppBarTitleStateProvider =
+    StateProvider<String>((ref) => 'Dashboard');
 
 class PageViewWrapperView extends ConsumerStatefulWidget {
   const PageViewWrapperView({super.key});
@@ -37,13 +42,39 @@ class _DashboardState extends ConsumerState<PageViewWrapperView> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBody: true,
+      appBar: coreAppBarWidget(
+        context: context,
+        ref: ref,
+        actionsOnPressed: () {},
+      ),
       body: SafeArea(
         child: PageView(
           physics: const AlwaysScrollableScrollPhysics(),
           pageSnapping: true,
-          onPageChanged: (value) => ref
-              .read(initialNavBarItemIdexStateProvider.notifier)
-              .update((state) => value),
+          onPageChanged: (value) {
+            ref
+                .read(initialNavBarItemIdexStateProvider.notifier)
+                .update((state) => value);
+            if (value == 0) {
+              ref.invalidate(initialAppBarTitleStateProvider);
+            } else if (value == 1) {
+              ref
+                  .read(initialAppBarTitleStateProvider.notifier)
+                  .update((state) => 'Transactions');
+            } else if (value == 2) {
+              ref
+                  .read(initialAppBarTitleStateProvider.notifier)
+                  .update((state) => 'Budget');
+            } else if (value == 3) {
+              ref
+                  .read(initialAppBarTitleStateProvider.notifier)
+                  .update((state) => 'Accounts');
+            } else if (value == 4) {
+              ref
+                  .read(initialAppBarTitleStateProvider.notifier)
+                  .update((state) => 'Wisedar');
+            }
+          },
           controller: pageController,
           children: pageList,
         ),
