@@ -9,14 +9,14 @@ import 'package:wiser/features/pageview/widgets/pageview_page_list_widget.dart';
 
 final initialNavBarItemIdexStateProvider = StateProvider((ref) => 0);
 
-class PageViewWrapper extends ConsumerStatefulWidget {
-  const PageViewWrapper({super.key});
+class PageViewWrapperView extends ConsumerStatefulWidget {
+  const PageViewWrapperView({super.key});
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _DashboardState();
 }
 
-class _DashboardState extends ConsumerState<PageViewWrapper> {
+class _DashboardState extends ConsumerState<PageViewWrapperView> {
   final User? user = FirebaseAuth.instance.currentUser;
 
   late PageController pageController;
@@ -56,10 +56,13 @@ class _DashboardState extends ConsumerState<PageViewWrapper> {
             iconData: Iconsax.home_1,
           ),
           pageviewBottomNavigationBarItemWidget(
+            iconData: Iconsax.receipt_text,
+          ),
+          pageviewBottomNavigationBarItemWidget(
             iconData: Iconsax.wallet_money,
           ),
           pageviewBottomNavigationBarItemWidget(
-            iconData: Iconsax.receipt_text,
+            iconData: Iconsax.card,
           ),
           pageviewBottomNavigationBarItemWidget(
             iconData: Iconsax.calendar_2,
