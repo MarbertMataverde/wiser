@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:wiser/core/constant.dart';
-import 'package:wiser/core/widgets/dialog.dart';
+import 'package:wiser/core/constant/core_constant.dart';
+import 'package:wiser/core/widgets/core_show_dialog_widget.dart';
 import 'package:wiser/features/authentication/login/services/sign_out_services.dart';
 
 Future<void> createAccount({
@@ -21,28 +21,28 @@ Future<void> createAccount({
           .updateDisplayName(fullName)
           .then((value) => Navigator.pop(context))
           .whenComplete(() async {
-        showCustomDialog(
+        coreShowCustomDialogWidget(
           context: context,
           title: 'Success',
-          assetPath: Constant.doneAssetPath,
-          content: Constant.createAccountSuccessMessage,
+          assetPath: CoreConstant.doneAssetPath,
+          content: CoreConstant.createAccountSuccessMessage,
         );
         // Prevents immediate access to the dashboard.
         await signOut();
       });
     },
   ).catchError((error) {
-    if (error.toString() == Constant.authNetworkErrorMessage) {
-      showCustomDialog(
+    if (error.toString() == CoreConstant.authNetworkErrorMessage) {
+      coreShowCustomDialogWidget(
           context: context,
           title: 'No Internet Connection',
-          content: Constant.networkRequestFailedMessage);
+          content: CoreConstant.networkRequestFailedMessage);
     } else {
-      showCustomDialog(
+      coreShowCustomDialogWidget(
           context: context,
           title: 'Something Went Wrong',
           content:
-              '${Constant.somethingWentWrongMessage}\n${error.toString()}');
+              '${CoreConstant.somethingWentWrongMessage}\n${error.toString()}');
     }
   });
 }

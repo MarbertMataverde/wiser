@@ -1,6 +1,4 @@
-export 'continue_with.dart';
-export 'continue_with_icon_button.dart';
-export '../../../../core/widgets/button.dart';
-export 'reset_password_button.dart';
-export 'tagline.dart';
-export '../../../../core/widgets/textfield.dart';
+export 'login_continue_with_icon_button_widget.dart';
+export 'login_continue_with_widget.dart';
+export 'login_reset_password_button_widget.dart';
+export 'login_tagline_widget.dart';

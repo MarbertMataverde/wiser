@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:wiser/core/constant.dart';
-import 'package:wiser/core/widgets/dialog.dart';
+import 'package:wiser/core/constant/core_constant.dart';
+import 'package:wiser/core/widgets/core_show_dialog_widget.dart';
 
 Future<void> signInWithEmailAndPassword({
   required BuildContext context,
@@ -16,43 +16,43 @@ Future<void> signInWithEmailAndPassword({
   } on FirebaseAuthException catch (error) {
     switch (error.code) {
       case 'wrong-password':
-        showCustomDialog(
+        coreShowCustomDialogWidget(
             context: context,
             title: 'Wrong Password',
-            content: Constant.wrongPasswordMessage);
+            content: CoreConstant.wrongPasswordMessage);
         break;
       case 'user-not-found':
-        showCustomDialog(
+        coreShowCustomDialogWidget(
             context: context,
             title: 'User Not Found',
-            content: Constant.userNotFoundMessage);
+            content: CoreConstant.userNotFoundMessage);
         break;
       case 'user-disabled':
-        showCustomDialog(
+        coreShowCustomDialogWidget(
             context: context,
             title: 'User Disabled',
-            content: Constant.userDisabledMessage);
+            content: CoreConstant.userDisabledMessage);
         break;
       case 'too-many-requests':
-        showCustomDialog(
+        coreShowCustomDialogWidget(
             context: context,
             title: 'Too Many Request',
-            content: Constant.tooManyRequestMessage);
+            content: CoreConstant.tooManyRequestMessage);
         break;
       case 'network-request-failed':
-        showCustomDialog(
+        coreShowCustomDialogWidget(
             context: context,
             title: 'No Internet Connection',
-            content: Constant.networkRequestFailedMessage);
+            content: CoreConstant.networkRequestFailedMessage);
         break;
       default:
-        showCustomDialog(
+        coreShowCustomDialogWidget(
             context: context,
             title: error.code,
             content: error.message.toString());
     }
   } catch (error) {
-    showCustomDialog(
+    coreShowCustomDialogWidget(
       context: context,
       title: 'Something Went Wrong',
       content: error.toString(),

@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:wiser/core/constant.dart';
-import 'package:wiser/core/widgets/dialog.dart';
+import 'package:wiser/core/constant/core_constant.dart';
+import 'package:wiser/core/widgets/core_show_dialog_widget.dart';
 
 Future<void> resetPasswordRequest({
   required BuildContext context,
@@ -10,12 +10,12 @@ Future<void> resetPasswordRequest({
   FirebaseAuth.instance
       .sendPasswordResetEmail(email: email)
       .then(
-        (value) => showCustomDialog(
+        (value) => coreShowCustomDialogWidget(
           context: context,
           title: 'Email Sent',
           buttonRightText: 'Thanks, Go back',
-          assetPath: Constant.doneAssetPath,
-          content: Constant.resetPasswordMailSentMessage,
+          assetPath: CoreConstant.doneAssetPath,
+          content: CoreConstant.resetPasswordMailSentMessage,
           buttonRightVoidCallback: () => Navigator.popUntil(
             context,
             ModalRoute.withName('/'),
@@ -23,22 +23,22 @@ Future<void> resetPasswordRequest({
         ),
       )
       .catchError((error) {
-    if (error.toString() == Constant.authUserNotFoundMessage) {
-      showCustomDialog(
+    if (error.toString() == CoreConstant.authUserNotFoundMessage) {
+      coreShowCustomDialogWidget(
           context: context,
           title: 'Email Not Found',
-          content: Constant.emailNotRegistered);
-    } else if (error.toString() == Constant.authNetworkErrorMessage) {
-      showCustomDialog(
+          content: CoreConstant.emailNotRegistered);
+    } else if (error.toString() == CoreConstant.authNetworkErrorMessage) {
+      coreShowCustomDialogWidget(
           context: context,
           title: 'No Internet Connection',
-          content: Constant.networkRequestFailedMessage);
+          content: CoreConstant.networkRequestFailedMessage);
     } else {
-      showCustomDialog(
+      coreShowCustomDialogWidget(
           context: context,
           title: 'Something Went Wrong',
           content:
-              '${Constant.somethingWentWrongMessage}\n${error.toString()}');
+              '${CoreConstant.somethingWentWrongMessage}\n${error.toString()}');
     }
   });
 }
