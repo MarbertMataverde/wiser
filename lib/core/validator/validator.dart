@@ -1,4 +1,4 @@
-import 'package:wiser/core/constant.dart';
+import 'package:wiser/core/constant/core_constant.dart';
 
 String? fullNameValidator(value) {
   if (value!.isEmpty) {
@@ -14,7 +14,7 @@ String? emailValidator(value) {
   if (value!.isEmpty) {
     return 'Please enter an email';
   }
-  if (!RegExp(Constant.regexPatternEmail).hasMatch(value)) {
+  if (!RegExp(CoreConstant.regexPatternEmail).hasMatch(value)) {
     return 'Please enter a valid email';
   }
   return null;

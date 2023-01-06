@@ -1,0 +1,79 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:wiser/features/dashboard/widgets/dashboard_account_list_widget.dart';
+import 'package:wiser/features/dashboard/widgets/dashboard_heading_widget.dart';
+import 'package:wiser/features/dashboard/widgets/dashboard_summary_card_widget.dart';
+import 'package:wiser/features/dashboard/widgets/dashboard_transaction_card_widget.dart';
+
+class DashboardView extends ConsumerStatefulWidget {
+  const DashboardView({super.key});
+
+  @override
+  ConsumerState<ConsumerStatefulWidget> createState() => _DashboardState();
+}
+
+class _DashboardState extends ConsumerState<DashboardView> {
+  final User? user = FirebaseAuth.instance.currentUser;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.only(top: 30, left: 20, right: 20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              dashboardHeadingWidget(user: user),
+              dashboardSummaryCardWidget(context),
+              const SizedBox(
+                height: 10,
+              ),
+              const Text(
+                'Accounts',
+                textScaleFactor: 1.1,
+                style: TextStyle(
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              dashboardAccountsListWidget(),
+              const SizedBox(
+                height: 10,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text(
+                    'Transactions',
+                    textScaleFactor: 1.1,
+                    style: TextStyle(
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {},
+                    child: const Text(
+                      'View all',
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Expanded(
+                child: ListView.builder(
+                  itemCount: 10,
+                  itemBuilder: (context, index) {
+                    return transactionCardWidget();
+                  },
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
