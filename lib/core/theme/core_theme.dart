@@ -25,7 +25,6 @@ final ThemeData wiserThemeData = ThemeData.light().copyWith(
     ),
   ),
   iconTheme: const IconThemeData(
-    size: 26,
     color: CoreConstant.bodyColor,
   ),
 );

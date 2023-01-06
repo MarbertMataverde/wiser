@@ -31,7 +31,7 @@ class CreateAccount extends StatelessWidget {
       body: SingleChildScrollView(
         child: SafeArea(
           child: Padding(
-            padding: CoreConstant.pagePadding,
+            padding: CoreConstant.pageHorizontalPadding,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

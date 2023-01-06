@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 class CoreConstant {
   // page content padding
-  static const EdgeInsetsGeometry pagePadding =
-      EdgeInsets.symmetric(vertical: 30, horizontal: 20);
+  static const EdgeInsetsGeometry pageHorizontalPadding =
+      EdgeInsets.symmetric(horizontal: 20);
 
   // OnBoarding images path
   static const String onBoardingAssetImagePath1 =

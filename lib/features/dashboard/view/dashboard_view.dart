@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:wiser/core/constant/core_constant.dart';
 import 'package:wiser/features/dashboard/widgets/dashboard_account_list_widget.dart';
 import 'package:wiser/features/dashboard/widgets/dashboard_heading_widget.dart';
 import 'package:wiser/features/dashboard/widgets/dashboard_summary_card_widget.dart';
@@ -19,20 +20,19 @@ class _DashboardState extends ConsumerState<DashboardView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBody: true,
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.only(top: 30, left: 20, right: 20),
+          padding: CoreConstant.pageHorizontalPadding,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              dashboardHeadingWidget(user: user),
               dashboardSummaryCardWidget(context),
               const SizedBox(
                 height: 10,
               ),
               const Text(
                 'Accounts',
-                textScaleFactor: 1.1,
                 style: TextStyle(
                   fontWeight: FontWeight.w500,
                 ),
@@ -46,7 +46,6 @@ class _DashboardState extends ConsumerState<DashboardView> {
                 children: [
                   const Text(
                     'Transactions',
-                    textScaleFactor: 1.1,
                     style: TextStyle(
                       fontWeight: FontWeight.w500,
                     ),
@@ -55,12 +54,10 @@ class _DashboardState extends ConsumerState<DashboardView> {
                     onTap: () {},
                     child: const Text(
                       'View all',
+                      textScaleFactor: 0.8,
                     ),
                   ),
                 ],
-              ),
-              const SizedBox(
-                height: 10,
               ),
               Expanded(
                 child: ListView.builder(

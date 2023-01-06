@@ -26,7 +26,7 @@ class ResetPassword extends StatelessWidget {
       ),
       body: SafeArea(
         child: Padding(
-          padding: CoreConstant.pagePadding,
+          padding: CoreConstant.pageHorizontalPadding,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
