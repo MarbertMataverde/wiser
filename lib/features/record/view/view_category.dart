@@ -8,31 +8,37 @@ import 'package:wiser/core/constant.dart';
 import 'package:wiser/features/record/view/view_new_record.dart';
 
 final isFoodAndDrinksExpandedStateProvider =
-    StateProvider<bool>((ref) => false);
+    StateProvider.autoDispose<bool>((ref) => false);
 
-final isShoppingExpandedStateProvider = StateProvider<bool>((ref) => false);
+final isShoppingExpandedStateProvider =
+    StateProvider.autoDispose<bool>((ref) => false);
 
-final isHousingExpandedStateProvider = StateProvider<bool>((ref) => false);
+final isHousingExpandedStateProvider =
+    StateProvider.autoDispose<bool>((ref) => false);
 
 final isTransportationExpandedStateProvider =
-    StateProvider<bool>((ref) => false);
+    StateProvider.autoDispose<bool>((ref) => false);
 
-final isVehicleExpandedStateProvider = StateProvider<bool>((ref) => false);
+final isVehicleExpandedStateProvider =
+    StateProvider.autoDispose<bool>((ref) => false);
 
 final isLifeEntertainmentExpandedStateProvider =
-    StateProvider<bool>((ref) => false);
+    StateProvider.autoDispose<bool>((ref) => false);
 
 final isComunicationPCExpandedStateProvider =
-    StateProvider<bool>((ref) => false);
+    StateProvider.autoDispose<bool>((ref) => false);
 
 final isFinancialExpensesExpandedStateProvider =
-    StateProvider<bool>((ref) => false);
+    StateProvider.autoDispose<bool>((ref) => false);
 
-final isInvesmentsExpandedStateProvider = StateProvider<bool>((ref) => false);
+final isInvesmentsExpandedStateProvider =
+    StateProvider.autoDispose<bool>((ref) => false);
 
-final isIncomeExpandedStateProvider = StateProvider<bool>((ref) => false);
+final isIncomeExpandedStateProvider =
+    StateProvider.autoDispose<bool>((ref) => false);
 
-final isOtherExpandedStateProvider = StateProvider<bool>((ref) => false);
+final isOtherExpandedStateProvider =
+    StateProvider.autoDispose<bool>((ref) => false);
 
 class CategoryList extends ConsumerStatefulWidget {
   const CategoryList({super.key});
@@ -56,8 +62,6 @@ class _CategoryListState extends ConsumerState<CategoryList> {
                   alignment: Alignment.topRight,
                   child: GestureDetector(
                     onTap: () {
-                      // this will close all opened category card
-                      invalidateAllCategoryStateProvider(ref: ref);
                       Navigator.pop(context);
                     },
                     child: const Icon(Iconsax.close_circle),
@@ -1215,7 +1219,7 @@ class _CategoryListState extends ConsumerState<CategoryList> {
 Column categoryCard({
   required String title,
   required IconData iconData,
-  required StateProvider<bool> stateProvider,
+  required AutoDisposeStateProvider<bool> stateProvider,
   required WidgetRef ref,
   required List<Widget> subCategoryList,
   required Color iconBackgroundColor,
@@ -1283,23 +1287,5 @@ selectedCategory({
   ref
       .read(selectedCategoryColorStateProvider.notifier)
       .update((state) => categoryIconBackgroundColor);
-
-  // this will close all opened category card
-  invalidateAllCategoryStateProvider(ref: ref);
   Navigator.pop(context);
-}
-
-invalidateAllCategoryStateProvider({required WidgetRef ref}) {
-  ref.invalidate(isComunicationPCExpandedStateProvider);
-  ref.invalidate(isFinancialExpensesExpandedStateProvider);
-  ref.invalidate(isFoodAndDrinksExpandedStateProvider);
-  ref.invalidate(isHousingExpandedStateProvider);
-  ref.invalidate(isIncomeExpandedStateProvider);
-  ref.invalidate(isInvesmentsExpandedStateProvider);
-  ref.invalidate(isLifeEntertainmentExpandedStateProvider);
-  ref.invalidate(isOtherExpandedStateProvider);
-  ref.invalidate(isShoppingExpandedStateProvider);
-  ref.invalidate(isTransportationExpandedStateProvider);
-  ref.invalidate(isVehicleExpandedStateProvider);
-  ref.invalidate(isIncomeStateProvider);
 }

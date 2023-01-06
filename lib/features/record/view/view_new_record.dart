@@ -9,16 +9,16 @@ import 'package:wiser/core/widgets/button.dart';
 import 'package:wiser/core/widgets/textfield.dart';
 import 'package:wiser/features/record/view/view_category.dart';
 
-final isIncomeStateProvider = StateProvider((ref) => true);
+final isIncomeStateProvider = StateProvider.autoDispose<bool>((ref) => true);
 
 final selectedCategoryTitleStateProvider =
-    StateProvider<String>((ref) => 'Category');
+    StateProvider.autoDispose<String>((ref) => 'Category');
 
 final selectedCategoryIconDataStateProvider =
-    StateProvider<IconData>((ref) => Iconsax.category_2);
+    StateProvider.autoDispose<IconData>((ref) => Iconsax.category_2);
 
 final selectedCategoryColorStateProvider =
-    StateProvider<Color>((ref) => Constant.greyColor);
+    StateProvider.autoDispose<Color>((ref) => Constant.greyColor);
 
 class NewRecord extends ConsumerStatefulWidget {
   const NewRecord({super.key});
@@ -59,7 +59,6 @@ class _NewRecordState extends ConsumerState<NewRecord> {
                   alignment: Alignment.topRight,
                   child: GestureDetector(
                     onTap: () {
-                      invalidateAllSelectedCategoryStateProvider(ref: ref);
                       Navigator.pop(context);
                     },
                     child: const Icon(Iconsax.close_circle),
@@ -294,11 +293,4 @@ Row transactionTypeBar({
       )
     ],
   );
-}
-
-invalidateAllSelectedCategoryStateProvider({required WidgetRef ref}) {
-  ref.invalidate(selectedCategoryColorStateProvider);
-  ref.invalidate(selectedCategoryIconDataStateProvider);
-  ref.invalidate(selectedCategoryTitleStateProvider);
-  ref.invalidate(isIncomeStateProvider);
 }
