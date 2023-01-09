@@ -5,7 +5,7 @@ String? fullNameValidator(value) {
     return 'What do you want to be called?';
   }
   if (value.toString().length <= 3) {
-    return 'Nickname too short.';
+    return 'Nickname too short';
   }
   return null;
 }
@@ -44,6 +44,23 @@ String? passwordEqualityValidator() {
 String? newTransactionAmountValidator(value) {
   if (value!.isEmpty) {
     return 'Please enter an amount';
+  }
+  return null;
+}
+
+String? newAccountInitalValueValidator(value) {
+  if (value!.isEmpty) {
+    return 'Please enter an amount';
+  }
+  return null;
+}
+
+String? newAccountNameValidator(value) {
+  if (value!.isEmpty) {
+    return 'Please enter account name';
+  }
+  if (value.toString().length <= 2) {
+    return 'Account name too short';
   }
   return null;
 }

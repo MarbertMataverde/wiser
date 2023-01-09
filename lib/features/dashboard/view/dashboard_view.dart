@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:wiser/core/constant/core_constant.dart';
 import 'package:wiser/features/dashboard/widgets/dashboard_account_list_widget.dart';
-import 'package:wiser/features/dashboard/widgets/dashboard_heading_widget.dart';
 import 'package:wiser/features/dashboard/widgets/dashboard_summary_card_widget.dart';
 import 'package:wiser/features/dashboard/widgets/dashboard_transaction_card_widget.dart';
 

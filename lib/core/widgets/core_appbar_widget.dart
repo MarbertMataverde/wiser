@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:iconsax/iconsax.dart';
-import 'package:wiser/core/constant/core_constant.dart';
 import 'package:wiser/core/widgets/core_icon_button_widget.dart';
 import 'package:wiser/features/pageview/view/page_wrapper_view.dart';
 
@@ -25,7 +23,9 @@ AppBar coreAppBarWidget({
       style: TextStyle(color: Theme.of(context).primaryColor),
     ),
     actions: [
-      coreIconButtonWidget(actionsOnPressed: actionsOnPressed),
+      isWrapperAppbar
+          ? coreIconButtonWidget(actionsOnPressed: actionsOnPressed)
+          : Container(),
     ],
   );
 }
