@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:wiser/core/constant/core_constant.dart';
 import 'package:wiser/core/widgets/core_appbar_widget.dart';
 
 import 'package:wiser/features/pageview/widgets/pageview_bottom_navigation_bar_widget.dart';
