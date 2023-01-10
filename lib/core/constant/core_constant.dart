@@ -99,6 +99,26 @@ class CoreConstant {
   static const Color incomeCategoryColor = Color(0xFF36C640);
   static const Color othersCategoryColor = Color(0xFF3A3A3A);
 
+  static const List<Color> categoryColorList = [
+    primaryColor,
+    Color(0xffDE9CE6),
+    Color(0xffFF9CC7),
+    Color(0xffFFAD9A),
+    Color(0xffFFD074),
+    Color(0xff968CDA),
+    Color(0xff9B77C6),
+    Color(0xffA061B0),
+    Color(0xffA24B97),
+    Color(0xffA1317B),
+    Color(0xffEB878F),
+    Color(0xff3F908D),
+    Color(0xff008A64),
+    Color(0xffF3875B),
+    Color(0xffA1317B),
+    Color(0xff006462),
+    Color(0xffBE90F0),
+  ];
+
   //regex patterm
   static const regexPatternEmail =
       r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$";

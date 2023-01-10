@@ -1,3 +1,4 @@
+import 'package:enefty_icons/enefty_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_iconpicker/flutter_iconpicker.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -6,7 +7,7 @@ import 'package:wiser/core/constant/core_constant.dart';
 import 'package:wiser/features/accounts/icons/accounts_custom_icon_packs.dart';
 
 final accountIconDataStateProvider =
-    StateProvider.autoDispose<IconData?>((ref) => CupertinoIcons.creditcard);
+    StateProvider.autoDispose<IconData?>((ref) => EneftyIcons.moneys_outline);
 
 pickAccountIcon({required WidgetRef ref, required BuildContext context}) async {
   IconData? icon = await FlutterIconPicker.showIconPicker(
