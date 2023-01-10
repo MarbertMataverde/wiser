@@ -1,31 +1,28 @@
 import 'dart:math';
 
 import 'package:currency_text_input_formatter/currency_text_input_formatter.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:wiser/core/constant/core_constant.dart';
 import 'package:wiser/core/validator/validator.dart';
 import 'package:wiser/core/widgets/core_button_widget.dart';
+import 'package:wiser/core/widgets/core_loading_animation_widget.dart';
 import 'package:wiser/core/widgets/core_textfield_widget.dart';
 import 'package:wiser/features/accounts/icons/accounts_pick_icon.dart';
+import 'package:wiser/features/accounts/services/new_account_services.dart';
 
 final accountBackgroundColorStateProvider = StateProvider.autoDispose<Color?>(
     (ref) => CoreConstant.categoryColorList[
         Random().nextInt(CoreConstant.categoryColorList.length)]);
 
+final isAddingNewAccountStateProvider = StateProvider<bool>((ref) => false);
+
 class NewAccountDialogContent extends ConsumerStatefulWidget {
   const NewAccountDialogContent({
     Key? key,
-    required GlobalKey<FormState> formKey,
-    required this.accountName,
-    required this.accountInitalAmount,
-  })  : _formKey = formKey,
-        super(key: key);
-
-  final GlobalKey<FormState> _formKey;
-  final TextEditingController accountName;
-  final TextEditingController accountInitalAmount;
+  }) : super(key: key);
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() =>
@@ -34,6 +31,24 @@ class NewAccountDialogContent extends ConsumerStatefulWidget {
 
 class _NewAccountDialogContentState
     extends ConsumerState<NewAccountDialogContent> {
+  late TextEditingController accountName;
+  late TextEditingController accountInitalAmount;
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
+  @override
+  void initState() {
+    super.initState();
+    accountName = TextEditingController();
+    accountInitalAmount = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    accountName.dispose();
+    accountInitalAmount.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Dialog(
@@ -51,7 +66,7 @@ class _NewAccountDialogContentState
             ),
             const SizedBox(height: 10),
             Form(
-              key: widget._formKey,
+              key: formKey,
               child: Column(
                 children: [
                   Row(
@@ -59,7 +74,7 @@ class _NewAccountDialogContentState
                     children: [
                       const Text('Select Account Icon'),
                       Card(
-                        color: CoreConstant.primaryColor,
+                        color: ref.watch(accountBackgroundColorStateProvider),
                         child: IconButton(
                           onPressed: () =>
                               pickAccountIcon(ref: ref, context: context),
@@ -126,7 +141,7 @@ class _NewAccountDialogContentState
                   coreTextFormFieldWidget(
                     context: context,
                     hintText: 'Account Name',
-                    controller: widget.accountName,
+                    controller: accountName,
                     customCursorColor: CoreConstant.bodyColor,
                     customHintColor: CoreConstant.greyColor,
                     customTextStyle: const TextStyle(
@@ -138,7 +153,7 @@ class _NewAccountDialogContentState
                   coreTextFormFieldWidget(
                     context: context,
                     hintText: 'Inital Amount',
-                    controller: widget.accountInitalAmount,
+                    controller: accountInitalAmount,
                     customCursorColor: CoreConstant.bodyColor,
                     customHintColor: CoreConstant.greyColor,
                     keyboardType: TextInputType.number,
@@ -159,14 +174,39 @@ class _NewAccountDialogContentState
               ),
             ),
             const SizedBox(height: 10),
-            coreButtonWidget(
-                context: context,
-                onPressed: () {
-                  if (widget._formKey.currentState!.validate()) {
-                    // function
-                  }
-                },
-                label: 'Add')
+            Visibility(
+              visible: !ref.watch(isAddingNewAccountStateProvider),
+              replacement: coreLoadingAnimationWidget(),
+              child: coreButtonWidget(
+                  context: context,
+                  onPressed: () async {
+                    if (formKey.currentState!.validate()) {
+                      ref
+                          .read(isAddingNewAccountStateProvider.notifier)
+                          .update((state) => true);
+                      await newAccount(
+                        context: context,
+                        currentUserUid: FirebaseAuth.instance.currentUser!.uid,
+                        accountBackgroundColor: ref
+                            .read(accountBackgroundColorStateProvider)
+                            .toString(),
+                        accountIconCodePoint:
+                            ref.read(accountIconDataStateProvider)!.codePoint,
+                        accountName: accountName.text,
+                        accountInitalAmount: int.parse(
+                          // this removes the peso sign and commas
+                          accountInitalAmount.text
+                              .split('₱')[1]
+                              .replaceAll(',', ''),
+                        ),
+                      );
+                    }
+                    ref
+                        .read(isAddingNewAccountStateProvider.notifier)
+                        .update((state) => false);
+                  },
+                  label: 'Add'),
+            )
           ],
         ),
       ),
