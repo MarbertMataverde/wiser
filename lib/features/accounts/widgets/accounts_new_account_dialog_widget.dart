@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:currency_text_input_formatter/currency_text_input_formatter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -7,6 +9,10 @@ import 'package:wiser/core/validator/validator.dart';
 import 'package:wiser/core/widgets/core_button_widget.dart';
 import 'package:wiser/core/widgets/core_textfield_widget.dart';
 import 'package:wiser/features/accounts/icons/accounts_pick_icon.dart';
+
+final accountBackgroundColorStateProvider = StateProvider.autoDispose<Color?>(
+    (ref) => CoreConstant.categoryColorList[
+        Random().nextInt(CoreConstant.categoryColorList.length)]);
 
 class NewAccountDialogContent extends ConsumerStatefulWidget {
   const NewAccountDialogContent({
@@ -64,6 +70,57 @@ class _NewAccountDialogContentState
                         ),
                       ),
                     ],
+                  ),
+                  SizedBox(
+                    height: 50,
+                    width: double.infinity,
+                    child: TextButton(
+                      style: TextButton.styleFrom(
+                        backgroundColor:
+                            ref.watch(accountBackgroundColorStateProvider),
+                      ),
+                      child: const Text(
+                        'Select Background Color',
+                        style: TextStyle(color: CoreConstant.colorWhite),
+                      ),
+                      onPressed: () {
+                        showDialog(
+                          context: context,
+                          builder: (context) => Dialog(
+                            backgroundColor:
+                                CoreConstant.scaffoldBackgroundColor,
+                            child: ListView.builder(
+                              itemCount: CoreConstant.categoryColorList.length,
+                              itemBuilder: (context, index) => Padding(
+                                padding: const EdgeInsets.all(5),
+                                child: InkWell(
+                                  onTap: () {
+                                    ref
+                                        .read(
+                                            accountBackgroundColorStateProvider
+                                                .notifier)
+                                        .update(
+                                          (state) => CoreConstant
+                                              .categoryColorList[index],
+                                        );
+                                    Navigator.pop(context);
+                                  },
+                                  child: Container(
+                                    width: double.infinity,
+                                    height: 40,
+                                    decoration: BoxDecoration(
+                                      color:
+                                          CoreConstant.categoryColorList[index],
+                                      borderRadius: BorderRadius.circular(5),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                    ),
                   ),
                   const SizedBox(height: 10),
                   coreTextFormFieldWidget(

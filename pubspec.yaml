@@ -26,6 +26,7 @@ dependencies:
   currency_text_input_formatter: ^2.1.8
   flutter_iconpicker: ^3.2.2
   enefty_icons: ^1.0.3
+  stacked_card_carousel: ^0.0.4
 
 dev_dependencies:
   flutter_test:

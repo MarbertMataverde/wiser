@@ -1,6 +1,5 @@
-import 'dart:developer';
+import 'dart:math';
 
-import 'package:enefty_icons/enefty_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax/iconsax.dart';
@@ -34,73 +33,70 @@ class _AccountsViewState extends ConsumerState<AccountsView> {
       body: Padding(
         padding: CoreConstant.pageHorizontalPadding,
         child: SafeArea(
-          child: Column(
-            children: [
-              Center(
-                child: Icon(ref.watch(accountIconDataStateProvider)),
-              ),
-              Expanded(
-                child: ListView.builder(
-                    itemCount: 3,
-                    itemBuilder: (BuildContext context, int index) {
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 5),
-                        child: Container(
-                          height: 100,
-                          alignment: Alignment.center,
-                          decoration: BoxDecoration(
-                              color: CoreConstant.fillColor,
-                              borderRadius: BorderRadius.circular(5)),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              Row(
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.all(20.0),
-                                    child: Icon(
-                                      ref.watch(
-                                        accountIconDataStateProvider,
-                                      ),
-                                      size: 40,
-                                      color: CoreConstant.primaryColor,
-                                    ),
+          child: ListView.builder(
+              itemCount: 10,
+              itemBuilder: (BuildContext context, int index) {
+                return Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 5),
+                  child: InkWell(
+                    onTap: () {},
+                    borderRadius: BorderRadius.circular(5),
+                    child: Container(
+                      height: 100,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        color: ref.watch(accountBackgroundColorStateProvider),
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  ref.watch(accountIconDataStateProvider),
+                                  size: 30,
+                                  color: CoreConstant.colorWhite,
+                                ),
+                                const Text(
+                                  'Investment',
+                                  style: TextStyle(
+                                    color: CoreConstant.colorWhite,
+                                    fontWeight: FontWeight.w600,
                                   ),
-                                  Text(
-                                    'Cash',
-                                    textScaleFactor: 1.5,
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.w600),
-                                  ),
-                                ],
-                              ),
-                              Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: const [
-                                  Text(
-                                    'Account balance',
-                                    textScaleFactor: 0.7,
-                                    style: TextStyle(
-                                      color: CoreConstant.greyColor,
-                                    ),
-                                  ),
-                                  Text(
-                                    '₱ 2,499',
-                                    textScaleFactor: 1.2,
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                      );
-                    }),
-              ),
-            ],
-          ),
+                          Expanded(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: const [
+                                Text(
+                                  'Account balance',
+                                  textScaleFactor: 0.7,
+                                  style: TextStyle(
+                                    color: CoreConstant.colorWhite,
+                                  ),
+                                ),
+                                Text(
+                                  '₱ 2,499',
+                                  textScaleFactor: 1.3,
+                                  style: TextStyle(
+                                    color: CoreConstant.colorWhite,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                );
+              }),
         ),
       ),
       floatingActionButton: FloatingActionButton(
