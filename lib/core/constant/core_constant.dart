@@ -4,6 +4,9 @@ class CoreConstant {
   // page content padding
   static const EdgeInsetsGeometry pageHorizontalPadding =
       EdgeInsets.symmetric(horizontal: 20);
+  static const EdgeInsetsGeometry pagePadding = EdgeInsets.all(20);
+  static const EdgeInsetsGeometry pageWithoutBottomPadding =
+      EdgeInsets.only(top: 20, left: 20, right: 20);
 
   // OnBoarding images path
   static const String onBoardingAssetImagePath1 =
