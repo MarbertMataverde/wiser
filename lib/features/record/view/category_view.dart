@@ -1,12 +1,10 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:wiser/core/constant/core_constant.dart';
 import 'package:wiser/core/widgets/core_appbar_widget.dart';
 import 'package:wiser/core/widgets/core_arrow_left_button_widget.dart';
-import 'package:wiser/features/record/view/new_record_view.dart';
+import 'package:wiser/features/record/widgets/record_widgets.dart';
 
 final isFoodAndDrinksExpandedStateProvider =
     StateProvider.autoDispose<bool>((ref) => false);
@@ -66,13 +64,13 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                categoryCard(
+                recordCategoryCardWidget(
                   ref: ref,
                   title: 'Food & Drinks',
                   iconData: FontAwesomeIcons.utensils,
                   iconBackgroundColor: CoreConstant.foodAndDrinksCategoryColor,
                   stateProvider: isFoodAndDrinksExpandedStateProvider,
-                  onTap: () => selectedCategory(
+                  onTap: () => recordSelectedCategoryWidget(
                     ref: ref,
                     context: context,
                     categoryTitle: 'Food & Drinks',
@@ -81,12 +79,12 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                         CoreConstant.foodAndDrinksCategoryColor,
                   ),
                   subCategoryList: [
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Bar, Cafe',
                       iconData: FontAwesomeIcons.wineGlass,
                       iconBackgroundColor:
                           CoreConstant.foodAndDrinksCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Bar, Cafe',
@@ -95,12 +93,12 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                             CoreConstant.foodAndDrinksCategoryColor,
                       ),
                     ),
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Groceries',
                       iconData: FontAwesomeIcons.cartShopping,
                       iconBackgroundColor:
                           CoreConstant.foodAndDrinksCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Groceries',
@@ -109,12 +107,12 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                             CoreConstant.foodAndDrinksCategoryColor,
                       ),
                     ),
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Restaurant, Fast-Food',
                       iconData: FontAwesomeIcons.burger,
                       iconBackgroundColor:
                           CoreConstant.foodAndDrinksCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Restaurant, Fast-Food',
@@ -125,13 +123,13 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                     ),
                   ],
                 ),
-                categoryCard(
+                recordCategoryCardWidget(
                   ref: ref,
                   title: 'Shopping',
                   iconData: FontAwesomeIcons.bagShopping,
                   iconBackgroundColor: CoreConstant.shoppingCategoryColor,
                   stateProvider: isShoppingExpandedStateProvider,
-                  onTap: () => selectedCategory(
+                  onTap: () => recordSelectedCategoryWidget(
                     ref: ref,
                     context: context,
                     categoryTitle: 'Shopping',
@@ -140,11 +138,11 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                         CoreConstant.shoppingCategoryColor,
                   ),
                   subCategoryList: [
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Clothes & Shoes',
                       iconData: FontAwesomeIcons.shirt,
                       iconBackgroundColor: CoreConstant.shoppingCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Clothes & Shoes',
@@ -153,11 +151,11 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                             CoreConstant.shoppingCategoryColor,
                       ),
                     ),
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Drug-store, Chemist',
                       iconData: FontAwesomeIcons.capsules,
                       iconBackgroundColor: CoreConstant.shoppingCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Drug-store, Chemist',
@@ -166,11 +164,11 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                             CoreConstant.shoppingCategoryColor,
                       ),
                     ),
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Electronics, Accessories',
                       iconData: FontAwesomeIcons.computer,
                       iconBackgroundColor: CoreConstant.shoppingCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Electronics, Accessories',
@@ -179,11 +177,11 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                             CoreConstant.shoppingCategoryColor,
                       ),
                     ),
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Free time',
                       iconData: FontAwesomeIcons.solidFaceSmile,
                       iconBackgroundColor: CoreConstant.shoppingCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Free time',
@@ -192,11 +190,11 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                             CoreConstant.shoppingCategoryColor,
                       ),
                     ),
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Gifts, Joy',
                       iconData: FontAwesomeIcons.gift,
                       iconBackgroundColor: CoreConstant.shoppingCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Gifts, Joy',
@@ -205,11 +203,11 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                             CoreConstant.shoppingCategoryColor,
                       ),
                     ),
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Health & beauty',
                       iconData: FontAwesomeIcons.kitMedical,
                       iconBackgroundColor: CoreConstant.shoppingCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Health & beauty',
@@ -218,11 +216,11 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                             CoreConstant.shoppingCategoryColor,
                       ),
                     ),
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Home, Garden',
                       iconData: FontAwesomeIcons.house,
                       iconBackgroundColor: CoreConstant.shoppingCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Home, Garden',
@@ -231,11 +229,11 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                             CoreConstant.shoppingCategoryColor,
                       ),
                     ),
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Jewels, Accessories',
                       iconData: FontAwesomeIcons.solidGem,
                       iconBackgroundColor: CoreConstant.shoppingCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Jewels, Accessories',
@@ -244,11 +242,11 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                             CoreConstant.shoppingCategoryColor,
                       ),
                     ),
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Kids',
                       iconData: FontAwesomeIcons.babyCarriage,
                       iconBackgroundColor: CoreConstant.shoppingCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Kids',
@@ -257,11 +255,11 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                             CoreConstant.shoppingCategoryColor,
                       ),
                     ),
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Pets, animals',
                       iconData: FontAwesomeIcons.paw,
                       iconBackgroundColor: CoreConstant.shoppingCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Pets, animals',
@@ -270,11 +268,11 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                             CoreConstant.shoppingCategoryColor,
                       ),
                     ),
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Stationery, Tools',
                       iconData: FontAwesomeIcons.screwdriverWrench,
                       iconBackgroundColor: CoreConstant.shoppingCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Stationery, Tools',
@@ -285,13 +283,13 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                     ),
                   ],
                 ),
-                categoryCard(
+                recordCategoryCardWidget(
                   ref: ref,
                   title: 'Housing',
                   iconData: FontAwesomeIcons.house,
                   iconBackgroundColor: CoreConstant.housingCategoryColor,
                   stateProvider: isHousingExpandedStateProvider,
-                  onTap: () => selectedCategory(
+                  onTap: () => recordSelectedCategoryWidget(
                     ref: ref,
                     context: context,
                     categoryTitle: 'Housing',
@@ -300,11 +298,11 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                         CoreConstant.housingCategoryColor,
                   ),
                   subCategoryList: [
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Energy, Utilities',
                       iconData: FontAwesomeIcons.solidLightbulb,
                       iconBackgroundColor: CoreConstant.housingCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Energy, Utilities',
@@ -313,11 +311,11 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                             CoreConstant.housingCategoryColor,
                       ),
                     ),
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Maintenance, Repairs',
                       iconData: FontAwesomeIcons.hammer,
                       iconBackgroundColor: CoreConstant.housingCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Maintenance, Repairs',
@@ -326,11 +324,11 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                             CoreConstant.housingCategoryColor,
                       ),
                     ),
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Mortgage',
                       iconData: FontAwesomeIcons.houseCircleCheck,
                       iconBackgroundColor: CoreConstant.housingCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Mortgage',
@@ -339,11 +337,11 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                             CoreConstant.housingCategoryColor,
                       ),
                     ),
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Property Insurance',
                       iconData: FontAwesomeIcons.buildingShield,
                       iconBackgroundColor: CoreConstant.housingCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Property Insurance',
@@ -352,11 +350,11 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                             CoreConstant.housingCategoryColor,
                       ),
                     ),
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Rent',
                       iconData: FontAwesomeIcons.key,
                       iconBackgroundColor: CoreConstant.housingCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Rent',
@@ -365,11 +363,11 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                             CoreConstant.housingCategoryColor,
                       ),
                     ),
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Services',
                       iconData: FontAwesomeIcons.houseUser,
                       iconBackgroundColor: CoreConstant.housingCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Services',
@@ -380,13 +378,13 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                     ),
                   ],
                 ),
-                categoryCard(
+                recordCategoryCardWidget(
                   ref: ref,
                   title: 'Transportation',
                   iconData: FontAwesomeIcons.road,
                   iconBackgroundColor: CoreConstant.transportationCategoryColor,
                   stateProvider: isTransportationExpandedStateProvider,
-                  onTap: () => selectedCategory(
+                  onTap: () => recordSelectedCategoryWidget(
                     ref: ref,
                     context: context,
                     categoryTitle: 'Transportation',
@@ -395,12 +393,12 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                         CoreConstant.transportationCategoryColor,
                   ),
                   subCategoryList: [
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Business Trips',
                       iconData: FontAwesomeIcons.suitcase,
                       iconBackgroundColor:
                           CoreConstant.transportationCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Business Trips',
@@ -409,12 +407,12 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                             CoreConstant.transportationCategoryColor,
                       ),
                     ),
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Long Distance',
                       iconData: FontAwesomeIcons.planeDeparture,
                       iconBackgroundColor:
                           CoreConstant.transportationCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Long Distance',
@@ -423,12 +421,12 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                             CoreConstant.transportationCategoryColor,
                       ),
                     ),
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Public Transport',
                       iconData: FontAwesomeIcons.bus,
                       iconBackgroundColor:
                           CoreConstant.transportationCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Public Transport',
@@ -437,12 +435,12 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                             CoreConstant.transportationCategoryColor,
                       ),
                     ),
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Taxi',
                       iconData: FontAwesomeIcons.taxi,
                       iconBackgroundColor:
                           CoreConstant.transportationCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Taxi',
@@ -453,13 +451,13 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                     ),
                   ],
                 ),
-                categoryCard(
+                recordCategoryCardWidget(
                   ref: ref,
                   title: 'Vehicle',
                   iconData: FontAwesomeIcons.car,
                   iconBackgroundColor: CoreConstant.vehicleCategoryColor,
                   stateProvider: isVehicleExpandedStateProvider,
-                  onTap: () => selectedCategory(
+                  onTap: () => recordSelectedCategoryWidget(
                     ref: ref,
                     context: context,
                     categoryTitle: 'Vehicle',
@@ -468,11 +466,11 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                         CoreConstant.vehicleCategoryColor,
                   ),
                   subCategoryList: [
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Fuel',
                       iconData: FontAwesomeIcons.gasPump,
                       iconBackgroundColor: CoreConstant.vehicleCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Fuel',
@@ -481,11 +479,11 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                             CoreConstant.vehicleCategoryColor,
                       ),
                     ),
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Leasing',
                       iconData: FontAwesomeIcons.coins,
                       iconBackgroundColor: CoreConstant.vehicleCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Leasing',
@@ -494,11 +492,11 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                             CoreConstant.vehicleCategoryColor,
                       ),
                     ),
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Parking',
                       iconData: FontAwesomeIcons.squareParking,
                       iconBackgroundColor: CoreConstant.vehicleCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Parking',
@@ -507,11 +505,11 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                             CoreConstant.vehicleCategoryColor,
                       ),
                     ),
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Rentals',
                       iconData: FontAwesomeIcons.key,
                       iconBackgroundColor: CoreConstant.vehicleCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Rentals',
@@ -520,11 +518,11 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                             CoreConstant.vehicleCategoryColor,
                       ),
                     ),
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Vehicle Insurance',
                       iconData: FontAwesomeIcons.carBurst,
                       iconBackgroundColor: CoreConstant.vehicleCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Vehicle Insurance',
@@ -533,11 +531,11 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                             CoreConstant.vehicleCategoryColor,
                       ),
                     ),
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Vehicle Maintenance',
                       iconData: FontAwesomeIcons.wrench,
                       iconBackgroundColor: CoreConstant.vehicleCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Vehicle Maintenance',
@@ -548,14 +546,14 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                     ),
                   ],
                 ),
-                categoryCard(
+                recordCategoryCardWidget(
                   ref: ref,
                   title: 'Life & Intertainment',
                   iconData: FontAwesomeIcons.person,
                   iconBackgroundColor:
                       CoreConstant.lifeAndEntertainmentCategoryColor,
                   stateProvider: isLifeEntertainmentExpandedStateProvider,
-                  onTap: () => selectedCategory(
+                  onTap: () => recordSelectedCategoryWidget(
                     ref: ref,
                     context: context,
                     categoryTitle: 'Life & Intertainment',
@@ -564,12 +562,12 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                         CoreConstant.lifeAndEntertainmentCategoryColor,
                   ),
                   subCategoryList: [
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Active Sport, Fitness',
                       iconData: FontAwesomeIcons.dumbbell,
                       iconBackgroundColor:
                           CoreConstant.lifeAndEntertainmentCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Active Sport, Fitness',
@@ -578,12 +576,12 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                             CoreConstant.lifeAndEntertainmentCategoryColor,
                       ),
                     ),
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Alcohol, Tobacco',
                       iconData: FontAwesomeIcons.wineBottle,
                       iconBackgroundColor:
                           CoreConstant.lifeAndEntertainmentCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Alcohol, Tobacco',
@@ -592,12 +590,12 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                             CoreConstant.lifeAndEntertainmentCategoryColor,
                       ),
                     ),
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Books, Audio, Subscriptions',
                       iconData: FontAwesomeIcons.book,
                       iconBackgroundColor:
                           CoreConstant.lifeAndEntertainmentCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Books, Audio, Subscriptions',
@@ -606,12 +604,12 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                             CoreConstant.lifeAndEntertainmentCategoryColor,
                       ),
                     ),
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Charity, Gifts',
                       iconData: FontAwesomeIcons.gift,
                       iconBackgroundColor:
                           CoreConstant.lifeAndEntertainmentCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Charity, Gifts',
@@ -620,12 +618,12 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                             CoreConstant.lifeAndEntertainmentCategoryColor,
                       ),
                     ),
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Culture, Sport Events',
                       iconData: FontAwesomeIcons.handsClapping,
                       iconBackgroundColor:
                           CoreConstant.lifeAndEntertainmentCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Culture, Sport Events',
@@ -634,12 +632,12 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                             CoreConstant.lifeAndEntertainmentCategoryColor,
                       ),
                     ),
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Education, Development',
                       iconData: FontAwesomeIcons.userGraduate,
                       iconBackgroundColor:
                           CoreConstant.lifeAndEntertainmentCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Education, Development',
@@ -648,12 +646,12 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                             CoreConstant.lifeAndEntertainmentCategoryColor,
                       ),
                     ),
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Health Care, Doctor',
                       iconData: FontAwesomeIcons.userDoctor,
                       iconBackgroundColor:
                           CoreConstant.lifeAndEntertainmentCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Health Care, Doctor',
@@ -662,12 +660,12 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                             CoreConstant.lifeAndEntertainmentCategoryColor,
                       ),
                     ),
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Hobbies',
                       iconData: FontAwesomeIcons.heart,
                       iconBackgroundColor:
                           CoreConstant.lifeAndEntertainmentCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Hobbies',
@@ -676,12 +674,12 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                             CoreConstant.lifeAndEntertainmentCategoryColor,
                       ),
                     ),
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Holiday, Trips, Hotels',
                       iconData: FontAwesomeIcons.umbrellaBeach,
                       iconBackgroundColor:
                           CoreConstant.lifeAndEntertainmentCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Holiday, Trips, Hotels',
@@ -690,12 +688,12 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                             CoreConstant.lifeAndEntertainmentCategoryColor,
                       ),
                     ),
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Life Events',
                       iconData: FontAwesomeIcons.cakeCandles,
                       iconBackgroundColor:
                           CoreConstant.lifeAndEntertainmentCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Life Events',
@@ -704,12 +702,12 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                             CoreConstant.lifeAndEntertainmentCategoryColor,
                       ),
                     ),
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Lottery, Gambling',
                       iconData: FontAwesomeIcons.dice,
                       iconBackgroundColor:
                           CoreConstant.lifeAndEntertainmentCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Lottery, Gambling',
@@ -718,12 +716,12 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                             CoreConstant.lifeAndEntertainmentCategoryColor,
                       ),
                     ),
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'TV, Streaming',
                       iconData: FontAwesomeIcons.tv,
                       iconBackgroundColor:
                           CoreConstant.lifeAndEntertainmentCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'TV, Streaming',
@@ -732,12 +730,12 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                             CoreConstant.lifeAndEntertainmentCategoryColor,
                       ),
                     ),
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Wellness, Beauty',
                       iconData: FontAwesomeIcons.spa,
                       iconBackgroundColor:
                           CoreConstant.lifeAndEntertainmentCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Wellness, Beauty',
@@ -748,14 +746,14 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                     ),
                   ],
                 ),
-                categoryCard(
+                recordCategoryCardWidget(
                   ref: ref,
                   title: 'Communication, PC',
                   iconData: FontAwesomeIcons.computer,
                   iconBackgroundColor:
                       CoreConstant.communicationPCCategoryColor,
                   stateProvider: isComunicationPCExpandedStateProvider,
-                  onTap: () => selectedCategory(
+                  onTap: () => recordSelectedCategoryWidget(
                     ref: ref,
                     context: context,
                     categoryTitle: 'Communication, PC',
@@ -764,12 +762,12 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                         CoreConstant.communicationPCCategoryColor,
                   ),
                   subCategoryList: [
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Internet',
                       iconData: FontAwesomeIcons.wifi,
                       iconBackgroundColor:
                           CoreConstant.communicationPCCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Internet',
@@ -778,12 +776,12 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                             CoreConstant.communicationPCCategoryColor,
                       ),
                     ),
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Phone, Cellphone',
                       iconData: FontAwesomeIcons.phone,
                       iconBackgroundColor:
                           CoreConstant.communicationPCCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Phone, Cellphone',
@@ -792,12 +790,12 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                             CoreConstant.communicationPCCategoryColor,
                       ),
                     ),
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Postal services',
                       iconData: FontAwesomeIcons.envelopesBulk,
                       iconBackgroundColor:
                           CoreConstant.communicationPCCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Postal services',
@@ -806,12 +804,12 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                             CoreConstant.communicationPCCategoryColor,
                       ),
                     ),
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Software, Apps, Games',
                       iconData: FontAwesomeIcons.download,
                       iconBackgroundColor:
                           CoreConstant.communicationPCCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Software, Apps, Games',
@@ -822,14 +820,14 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                     ),
                   ],
                 ),
-                categoryCard(
+                recordCategoryCardWidget(
                   ref: ref,
                   title: 'Financial Expenses',
                   iconData: FontAwesomeIcons.coins,
                   iconBackgroundColor:
                       CoreConstant.financialExpensesCategoryColor,
                   stateProvider: isFinancialExpensesExpandedStateProvider,
-                  onTap: () => selectedCategory(
+                  onTap: () => recordSelectedCategoryWidget(
                     ref: ref,
                     context: context,
                     categoryTitle: 'Financial Expenses',
@@ -838,12 +836,12 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                         CoreConstant.financialExpensesCategoryColor,
                   ),
                   subCategoryList: [
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Advisory',
                       iconData: FontAwesomeIcons.commentDollar,
                       iconBackgroundColor:
                           CoreConstant.financialExpensesCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Advisory',
@@ -852,12 +850,12 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                             CoreConstant.financialExpensesCategoryColor,
                       ),
                     ),
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Charges, Fees',
                       iconData: FontAwesomeIcons.receipt,
                       iconBackgroundColor:
                           CoreConstant.financialExpensesCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Charges, Fees',
@@ -866,12 +864,12 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                             CoreConstant.financialExpensesCategoryColor,
                       ),
                     ),
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Child Support',
                       iconData: FontAwesomeIcons.handsHoldingChild,
                       iconBackgroundColor:
                           CoreConstant.financialExpensesCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Child Support',
@@ -880,12 +878,12 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                             CoreConstant.financialExpensesCategoryColor,
                       ),
                     ),
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Fines',
                       iconData: FontAwesomeIcons.handPointUp,
                       iconBackgroundColor:
                           CoreConstant.financialExpensesCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Fines',
@@ -894,12 +892,12 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                             CoreConstant.financialExpensesCategoryColor,
                       ),
                     ),
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Insurances',
                       iconData: FontAwesomeIcons.hospitalUser,
                       iconBackgroundColor:
                           CoreConstant.financialExpensesCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Insurances',
@@ -908,12 +906,12 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                             CoreConstant.financialExpensesCategoryColor,
                       ),
                     ),
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Loan, Interest',
                       iconData: FontAwesomeIcons.landmark,
                       iconBackgroundColor:
                           CoreConstant.financialExpensesCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Loan, Interest',
@@ -922,12 +920,12 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                             CoreConstant.financialExpensesCategoryColor,
                       ),
                     ),
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Texes',
                       iconData: FontAwesomeIcons.moneyBill1Wave,
                       iconBackgroundColor:
                           CoreConstant.financialExpensesCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Texes',
@@ -938,13 +936,13 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                     ),
                   ],
                 ),
-                categoryCard(
+                recordCategoryCardWidget(
                   ref: ref,
                   title: 'Invesments',
                   iconData: FontAwesomeIcons.chartLine,
                   iconBackgroundColor: CoreConstant.invesmentsCategoryColor,
                   stateProvider: isInvesmentsExpandedStateProvider,
-                  onTap: () => selectedCategory(
+                  onTap: () => recordSelectedCategoryWidget(
                     ref: ref,
                     context: context,
                     categoryTitle: 'Invesments',
@@ -953,11 +951,11 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                         CoreConstant.invesmentsCategoryColor,
                   ),
                   subCategoryList: [
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Collections',
                       iconData: FontAwesomeIcons.groupArrowsRotate,
                       iconBackgroundColor: CoreConstant.invesmentsCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Collections',
@@ -966,11 +964,11 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                             CoreConstant.invesmentsCategoryColor,
                       ),
                     ),
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Financial Investments',
                       iconData: FontAwesomeIcons.chartColumn,
                       iconBackgroundColor: CoreConstant.invesmentsCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Financial Investments',
@@ -979,11 +977,11 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                             CoreConstant.invesmentsCategoryColor,
                       ),
                     ),
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Realty',
                       iconData: FontAwesomeIcons.city,
                       iconBackgroundColor: CoreConstant.invesmentsCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Realty',
@@ -992,11 +990,11 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                             CoreConstant.invesmentsCategoryColor,
                       ),
                     ),
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Savings',
                       iconData: FontAwesomeIcons.piggyBank,
                       iconBackgroundColor: CoreConstant.invesmentsCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Savings',
@@ -1005,11 +1003,11 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                             CoreConstant.invesmentsCategoryColor,
                       ),
                     ),
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Vehicles, Chattels',
                       iconData: FontAwesomeIcons.carSide,
                       iconBackgroundColor: CoreConstant.invesmentsCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Vehicles, Chattels',
@@ -1020,13 +1018,13 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                     ),
                   ],
                 ),
-                categoryCard(
+                recordCategoryCardWidget(
                   ref: ref,
                   title: 'Income',
                   iconData: FontAwesomeIcons.sackDollar,
                   iconBackgroundColor: CoreConstant.incomeCategoryColor,
                   stateProvider: isIncomeExpandedStateProvider,
-                  onTap: () => selectedCategory(
+                  onTap: () => recordSelectedCategoryWidget(
                     ref: ref,
                     context: context,
                     categoryTitle: 'Income',
@@ -1035,11 +1033,11 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                         CoreConstant.incomeCategoryColor,
                   ),
                   subCategoryList: [
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Checks, Coupons',
                       iconData: FontAwesomeIcons.rug,
                       iconBackgroundColor: CoreConstant.incomeCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Checks, Coupons',
@@ -1048,11 +1046,11 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                             CoreConstant.incomeCategoryColor,
                       ),
                     ),
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Child Support',
                       iconData: FontAwesomeIcons.handsHoldingChild,
                       iconBackgroundColor: CoreConstant.incomeCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Child Support',
@@ -1061,11 +1059,11 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                             CoreConstant.incomeCategoryColor,
                       ),
                     ),
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Dues, Grants',
                       iconData: FontAwesomeIcons.circleCheck,
                       iconBackgroundColor: CoreConstant.incomeCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Dues, Grants',
@@ -1074,11 +1072,11 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                             CoreConstant.incomeCategoryColor,
                       ),
                     ),
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Gifts',
                       iconData: FontAwesomeIcons.gift,
                       iconBackgroundColor: CoreConstant.incomeCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Gifts',
@@ -1087,11 +1085,11 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                             CoreConstant.incomeCategoryColor,
                       ),
                     ),
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Interest, Dividends',
                       iconData: FontAwesomeIcons.percent,
                       iconBackgroundColor: CoreConstant.incomeCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Interest, Dividends',
@@ -1100,11 +1098,11 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                             CoreConstant.incomeCategoryColor,
                       ),
                     ),
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Lending, Renting',
                       iconData: FontAwesomeIcons.bookJournalWhills,
                       iconBackgroundColor: CoreConstant.incomeCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Lending, Renting',
@@ -1113,11 +1111,11 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                             CoreConstant.incomeCategoryColor,
                       ),
                     ),
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Lottery, Gambling',
                       iconData: FontAwesomeIcons.dice,
                       iconBackgroundColor: CoreConstant.incomeCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Lottery, Gambling',
@@ -1126,11 +1124,11 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                             CoreConstant.incomeCategoryColor,
                       ),
                     ),
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Refunds (Tax, Purchase)',
                       iconData: FontAwesomeIcons.arrowRotateLeft,
                       iconBackgroundColor: CoreConstant.incomeCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Refunds (Tax, Purchase)',
@@ -1139,11 +1137,11 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                             CoreConstant.incomeCategoryColor,
                       ),
                     ),
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Rental Income',
                       iconData: FontAwesomeIcons.houseChimneyUser,
                       iconBackgroundColor: CoreConstant.incomeCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Rental Income',
@@ -1152,11 +1150,11 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                             CoreConstant.incomeCategoryColor,
                       ),
                     ),
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Sale',
                       iconData: FontAwesomeIcons.moneyBill,
                       iconBackgroundColor: CoreConstant.incomeCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Sale',
@@ -1165,11 +1163,11 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                             CoreConstant.incomeCategoryColor,
                       ),
                     ),
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Wage, Invoices',
                       iconData: FontAwesomeIcons.handHoldingDollar,
                       iconBackgroundColor: CoreConstant.incomeCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Wage, Invoices',
@@ -1180,13 +1178,13 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                     ),
                   ],
                 ),
-                categoryCard(
+                recordCategoryCardWidget(
                   ref: ref,
                   title: 'Others',
                   iconData: FontAwesomeIcons.bars,
                   iconBackgroundColor: CoreConstant.othersCategoryColor,
                   stateProvider: isOtherExpandedStateProvider,
-                  onTap: () => selectedCategory(
+                  onTap: () => recordSelectedCategoryWidget(
                     ref: ref,
                     context: context,
                     categoryTitle: 'Others',
@@ -1195,11 +1193,11 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
                         CoreConstant.othersCategoryColor,
                   ),
                   subCategoryList: [
-                    subCategoryCard(
+                    recordSubCategoryCardWidget(
                       title: 'Missing',
                       iconData: FontAwesomeIcons.question,
                       iconBackgroundColor: CoreConstant.othersCategoryColor,
-                      onTap: () => selectedCategory(
+                      onTap: () => recordSelectedCategoryWidget(
                         ref: ref,
                         context: context,
                         categoryTitle: 'Missing',
@@ -1217,78 +1215,4 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
       ),
     );
   }
-}
-
-Column categoryCard({
-  required String title,
-  required IconData iconData,
-  required AutoDisposeStateProvider<bool> stateProvider,
-  required WidgetRef ref,
-  required List<Widget> subCategoryList,
-  required Color iconBackgroundColor,
-  required Function()? onTap,
-}) {
-  return Column(
-    children: [
-      cardButton(
-        onTap: onTap,
-        iconData: iconData,
-        title: title,
-        isHasPrefixIcon: true,
-        iconBackgroundColor: iconBackgroundColor,
-        isExpanded: ref.watch(stateProvider),
-        expandIconOnPressed: () {
-          ref.read(stateProvider.notifier).update(
-                (state) => !ref.read(stateProvider),
-              );
-          log(ref.watch(stateProvider).toString());
-        },
-      ),
-      const SizedBox(
-        height: 5,
-      ),
-      Visibility(
-        visible: ref.watch(stateProvider),
-        child: Column(
-          children: subCategoryList,
-        ),
-      ),
-    ],
-  );
-}
-
-Padding subCategoryCard({
-  required Function()? onTap,
-  required String title,
-  required iconBackgroundColor,
-  required IconData iconData,
-}) {
-  return Padding(
-    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
-    child: cardButton(
-      onTap: onTap,
-      iconData: iconData,
-      title: title,
-      iconBackgroundColor: iconBackgroundColor,
-    ),
-  );
-}
-
-selectedCategory({
-  required WidgetRef ref,
-  required BuildContext context,
-  required String categoryTitle,
-  required IconData categoryIconData,
-  required Color categoryIconBackgroundColor,
-}) {
-  ref
-      .read(selectedCategoryTitleStateProvider.notifier)
-      .update((state) => categoryTitle);
-  ref
-      .read(selectedCategoryIconDataStateProvider.notifier)
-      .update((state) => categoryIconData);
-  ref
-      .read(selectedCategoryColorStateProvider.notifier)
-      .update((state) => categoryIconBackgroundColor);
-  Navigator.pop(context);
 }
