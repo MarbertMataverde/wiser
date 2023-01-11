@@ -42,7 +42,7 @@ class Login extends StatelessWidget {
           SingleChildScrollView(
             child: SafeArea(
               child: Padding(
-                padding: CoreConstant.pageHorizontalPadding,
+                padding: CoreConstant.pagePadding,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
