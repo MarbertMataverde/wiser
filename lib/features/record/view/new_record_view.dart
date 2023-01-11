@@ -1,4 +1,5 @@
 import 'package:currency_text_input_formatter/currency_text_input_formatter.dart';
+import 'package:enefty_icons/enefty_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -11,10 +12,12 @@ import 'package:wiser/core/widgets/core_button_widget.dart';
 import 'package:wiser/core/widgets/core_textfield_widget.dart';
 import 'package:wiser/features/record/view/category_view.dart';
 import 'package:wiser/features/record/widgets/record_card_button_widget.dart';
+import 'package:wiser/features/record/widgets/record_show_select_account_dialog_widget.dart';
 import 'package:wiser/features/record/widgets/record_transaction_type_bar_widget.dart';
 
 final isIncomeStateProvider = StateProvider.autoDispose<bool>((ref) => true);
 
+// category
 final selectedCategoryTitleStateProvider =
     StateProvider.autoDispose<String>((ref) => 'Category');
 
@@ -22,6 +25,16 @@ final selectedCategoryIconDataStateProvider =
     StateProvider.autoDispose<IconData>((ref) => Iconsax.category_2);
 
 final selectedCategoryColorStateProvider =
+    StateProvider.autoDispose<Color>((ref) => CoreConstant.greyColor);
+
+// account
+final selectedAccountNameStateProvider =
+    StateProvider.autoDispose<String>((ref) => 'Cash');
+
+final selectedAccountIconDataStateProvider =
+    StateProvider.autoDispose<int>((ref) => 60473); // icon data CodePoint
+
+final selectedAccountColorStateProvider =
     StateProvider.autoDispose<Color>((ref) => CoreConstant.greyColor);
 
 class NewRecordView extends ConsumerStatefulWidget {
@@ -32,6 +45,9 @@ class NewRecordView extends ConsumerStatefulWidget {
 }
 
 class _NewRecordState extends ConsumerState<NewRecordView> {
+  // Used EneftyIcons as icon for category
+  final kFontFam = 'EneftyIcons';
+  final String kFontPkg = 'enefty_icons';
   late final TextEditingController amount;
   late final TextEditingController notes;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -109,9 +125,18 @@ class _NewRecordState extends ConsumerState<NewRecordView> {
                   height: 10,
                 ),
                 recordCardButtonWidget(
-                  onTap: () {},
-                  title: 'Cash',
-                  iconData: Iconsax.card_coin,
+                  onTap: () => showDialog(
+                      context: context,
+                      builder: (context) =>
+                          const RecordShowSelectAccountDialogWidget()),
+                  title: ref.watch(selectedAccountNameStateProvider),
+                  iconData: IconData(
+                    ref.watch(selectedAccountIconDataStateProvider),
+                    fontFamily: kFontFam,
+                    fontPackage: kFontPkg,
+                  ),
+                  iconBackgroundColor:
+                      ref.watch(selectedAccountColorStateProvider),
                 ),
                 const SizedBox(
                   height: 10,
@@ -149,3 +174,12 @@ class _NewRecordState extends ConsumerState<NewRecordView> {
     );
   }
 }
+
+// Color(
+//     int.parse(
+//       accountData[index]['account-background-color']
+//           .toString()
+//           .split('Color(')[1]
+//           .split(')')[0],
+//     ),
+//   );
