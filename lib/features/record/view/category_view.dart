@@ -3,8 +3,9 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:wiser/core/constant/core_constant.dart';
+import 'package:wiser/core/widgets/core_appbar_widget.dart';
+import 'package:wiser/core/widgets/core_arrow_left_button_widget.dart';
 import 'package:wiser/features/record/view/new_record_view.dart';
 
 final isFoodAndDrinksExpandedStateProvider =
@@ -51,32 +52,20 @@ class _CategoryListState extends ConsumerState<CategoryListView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: coreAppBarWidget(
+          context: context,
+          ref: ref,
+          isWrapperAppbar: false,
+          leadingWidget: coreArrowLeftButtonWidget(context),
+          actionsOnPressed: () => Navigator.pop(context),
+          nonPageWrapperAppbarTitle: 'Category List'),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.only(top: 30, left: 20, right: 20),
+          padding: CoreConstant.pageWithoutBottomPadding,
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Align(
-                  alignment: Alignment.topRight,
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
-                    child: const Icon(Iconsax.close_circle),
-                  ),
-                ),
-                const Text(
-                  'Category List',
-                  textScaleFactor: 1.5,
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
                 categoryCard(
                   ref: ref,
                   title: 'Food & Drinks',
