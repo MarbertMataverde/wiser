@@ -10,6 +10,8 @@ import 'package:wiser/core/widgets/core_arrow_left_button_widget.dart';
 import 'package:wiser/core/widgets/core_button_widget.dart';
 import 'package:wiser/core/widgets/core_textfield_widget.dart';
 import 'package:wiser/features/record/view/category_view.dart';
+import 'package:wiser/features/record/widgets/record_card_button_widget.dart';
+import 'package:wiser/features/record/widgets/record_transaction_type_bar_widget.dart';
 
 final isIncomeStateProvider = StateProvider.autoDispose<bool>((ref) => true);
 
@@ -65,7 +67,7 @@ class _NewRecordState extends ConsumerState<NewRecordView> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                transactionTypeBar(ref: ref),
+                recordTransactionTypeBarWidget(ref: ref),
                 const SizedBox(
                   height: 20,
                 ),
@@ -91,7 +93,7 @@ class _NewRecordState extends ConsumerState<NewRecordView> {
                 const SizedBox(
                   height: 10,
                 ),
-                cardButton(
+                recordCardButtonWidget(
                   onTap: () => Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -106,7 +108,7 @@ class _NewRecordState extends ConsumerState<NewRecordView> {
                 const SizedBox(
                   height: 10,
                 ),
-                cardButton(
+                recordCardButtonWidget(
                   onTap: () {},
                   title: 'Cash',
                   iconData: Iconsax.card_coin,
@@ -114,7 +116,7 @@ class _NewRecordState extends ConsumerState<NewRecordView> {
                 const SizedBox(
                   height: 10,
                 ),
-                cardButton(
+                recordCardButtonWidget(
                   onTap: () {},
                   title: 'Today',
                   iconData: Iconsax.calendar_1,
@@ -146,139 +148,4 @@ class _NewRecordState extends ConsumerState<NewRecordView> {
       ),
     );
   }
-}
-
-InkWell cardButton({
-  required Function()? onTap,
-  required IconData iconData,
-  required String title,
-  Color? iconBackgroundColor,
-  bool isHasPrefixIcon = false,
-  bool isExpanded = false,
-  Function()? expandIconOnPressed,
-}) {
-  return InkWell(
-    onTap: onTap,
-    child: ClipRRect(
-      borderRadius: BorderRadius.circular(5),
-      child: Container(
-        height: 70,
-        width: double.infinity,
-        color: CoreConstant.fillColor,
-        child: Padding(
-          padding: const EdgeInsets.all(15.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(5),
-                    child: Container(
-                      height: 40,
-                      width: 40,
-                      color: iconBackgroundColor ?? CoreConstant.greyColor,
-                      child: Icon(
-                        iconData,
-                        color: CoreConstant.colorWhite,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 20,
-                  ),
-                  Text(
-                    title,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                ],
-              ),
-              Visibility(
-                visible: isHasPrefixIcon,
-                child: IconButton(
-                  splashRadius: 24,
-                  onPressed: expandIconOnPressed ?? () {},
-                  icon: Icon(
-                    isExpanded ? Iconsax.arrow_up_2 : Iconsax.arrow_down_1,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    ),
-  );
-}
-
-Row transactionTypeBar({
-  required WidgetRef ref,
-}) {
-  return Row(
-    children: [
-      Expanded(
-        flex: ref.watch(isIncomeStateProvider) ? 2 : 1,
-        child: GestureDetector(
-          onTap: () =>
-              ref.read(isIncomeStateProvider.notifier).update((state) => true),
-          child: AnimatedContainer(
-            duration: const Duration(seconds: 1),
-            curve: Curves.decelerate,
-            height: 50,
-            decoration: BoxDecoration(
-                color: ref.watch(isIncomeStateProvider)
-                    ? CoreConstant.greenColor
-                    : CoreConstant.greyColor,
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(5),
-                  bottomLeft: Radius.circular(5),
-                )),
-            child: Center(
-              child: Text(
-                'Income',
-                style: TextStyle(
-                  color: ref.watch(isIncomeStateProvider)
-                      ? CoreConstant.colorWhite
-                      : CoreConstant.bodyColor,
-                ),
-              ),
-            ),
-          ),
-        ),
-      ),
-      Expanded(
-        flex: ref.watch(isIncomeStateProvider) ? 1 : 2,
-        child: GestureDetector(
-          onTap: () =>
-              ref.read(isIncomeStateProvider.notifier).update((state) => false),
-          child: AnimatedContainer(
-            duration: const Duration(seconds: 1),
-            curve: Curves.decelerate,
-            height: 50,
-            decoration: BoxDecoration(
-              color: ref.watch(isIncomeStateProvider)
-                  ? CoreConstant.greyColor
-                  : CoreConstant.redColor,
-              borderRadius: const BorderRadius.only(
-                topRight: Radius.circular(5),
-                bottomRight: Radius.circular(5),
-              ),
-            ),
-            child: Center(
-              child: Text(
-                'Expense',
-                style: TextStyle(
-                  color: ref.watch(isIncomeStateProvider)
-                      ? CoreConstant.bodyColor
-                      : CoreConstant.colorWhite,
-                ),
-              ),
-            ),
-          ),
-        ),
-      )
-    ],
-  );
 }
