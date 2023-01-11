@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:wiser/core/constant/core_constant.dart';
 import 'package:wiser/core/widgets/core_show_dialog_widget.dart';
 import 'package:wiser/features/authentication/login/services/sign_out_services.dart';
+import 'package:wiser/features/authentication/services/authentication_set_default_account_data.dart';
 
 Future<void> createAccount({
   required BuildContext context,
@@ -19,7 +20,10 @@ Future<void> createAccount({
     (value) async {
       await FirebaseAuth.instance.currentUser!
           .updateDisplayName(fullName)
-          .then((value) => Navigator.pop(context))
+          .then(
+            (value) =>
+                setDefaultAccountData().then((value) => Navigator.pop(context)),
+          )
           .whenComplete(() async {
         coreShowCustomDialogWidget(
           context: context,
