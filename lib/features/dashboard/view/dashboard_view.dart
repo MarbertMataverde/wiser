@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -14,7 +15,12 @@ class DashboardView extends ConsumerStatefulWidget {
 }
 
 class _DashboardState extends ConsumerState<DashboardView> {
-  final User? user = FirebaseAuth.instance.currentUser;
+  final Stream<QuerySnapshot> accountStream = FirebaseFirestore.instance
+      .collection('users')
+      .doc(FirebaseAuth.instance.currentUser!.uid)
+      .collection('accounts')
+      .orderBy('account-create-date', descending: false)
+      .snapshots();
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +42,10 @@ class _DashboardState extends ConsumerState<DashboardView> {
                   fontWeight: FontWeight.w500,
                 ),
               ),
-              dashboardAccountsListWidget(),
+              dashboardAccountsListWidget(
+                ref: ref,
+                accountStream: accountStream,
+              ),
               const SizedBox(
                 height: 10,
               ),

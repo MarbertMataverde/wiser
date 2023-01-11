@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:wiser/core/riverpod/riverpod.dart';
 import 'package:wiser/core/widgets/core_appbar_widget.dart';
 import 'package:wiser/features/authentication/login/services/sign_out_services.dart';
 
@@ -10,8 +9,7 @@ import 'package:wiser/features/pageview/widgets/pageview_bottom_navigation_bar_w
 import 'package:wiser/features/pageview/widgets/pageview_bottom_navigation_bar_item_widget.dart';
 import 'package:wiser/features/pageview/widgets/pageview_page_list_widget.dart';
 
-final initialNavBarItemIdexStateProvider =
-    StateProvider.autoDispose<int>((ref) => 0);
+final initialNavBarItemIdexStateProvider = StateProvider<int>((ref) => 0);
 
 final initialAppBarTitleStateProvider =
     StateProvider<String>((ref) => 'Dashboard');
@@ -49,7 +47,6 @@ class _DashboardState extends ConsumerState<PageViewWrapperView> {
         ref: ref,
         actionsOnPressed: () {
           signOut();
-          ref.invalidate(accountSteamStateProvider);
         },
       ),
       body: SafeArea(
