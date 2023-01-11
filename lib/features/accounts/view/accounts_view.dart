@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:intl/intl.dart';
 import 'package:wiser/core/constant/core_constant.dart';
+import 'package:wiser/core/riverpod/riverpod.dart';
 import 'package:wiser/core/widgets/core_loading_animation_widget.dart';
 import 'package:wiser/features/accounts/widgets/accounts_new_account_dialog_widget.dart';
 
@@ -16,13 +17,6 @@ class AccountsView extends ConsumerStatefulWidget {
 }
 
 class _AccountsViewState extends ConsumerState<AccountsView> {
-  final Stream<QuerySnapshot> accountStream = FirebaseFirestore.instance
-      .collection('users')
-      .doc(FirebaseAuth.instance.currentUser!.uid)
-      .collection('accounts')
-      .orderBy('account-create-date', descending: false)
-      .snapshots();
-
   // Used EneftyIcons as icon for category
   static const _kFontFam = 'EneftyIcons';
   static const String _kFontPkg = 'enefty_icons';
@@ -34,7 +28,7 @@ class _AccountsViewState extends ConsumerState<AccountsView> {
         padding: CoreConstant.pageHorizontalPadding,
         child: SafeArea(
           child: StreamBuilder<QuerySnapshot>(
-            stream: accountStream,
+            stream: ref.watch(accountSteamStateProvider),
             builder: (context, snapshot) {
               if (snapshot.hasError) {
                 return const Text('Something went wrong');
