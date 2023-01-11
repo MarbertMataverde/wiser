@@ -5,7 +5,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:intl/intl.dart';
 import 'package:wiser/core/constant/core_constant.dart';
-import 'package:wiser/core/riverpod/riverpod.dart';
+import 'package:wiser/core/widgets/core_account_background_color_widget.dart';
+import 'package:wiser/core/widgets/core_account_icon_data_widget.dart';
 import 'package:wiser/core/widgets/core_loading_animation_widget.dart';
 import 'package:wiser/features/accounts/widgets/accounts_new_account_dialog_widget.dart';
 
@@ -17,9 +18,13 @@ class AccountsView extends ConsumerStatefulWidget {
 }
 
 class _AccountsViewState extends ConsumerState<AccountsView> {
-  // Used EneftyIcons as icon for category
-  static const _kFontFam = 'EneftyIcons';
-  static const String _kFontPkg = 'enefty_icons';
+  final Stream<QuerySnapshot> accountStream = FirebaseFirestore.instance
+      .collection('users')
+      .doc(FirebaseAuth.instance.currentUser!.uid)
+      .collection('accounts')
+      .orderBy('account-create-date', descending: false)
+      .snapshots();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,7 +33,7 @@ class _AccountsViewState extends ConsumerState<AccountsView> {
         padding: CoreConstant.pageHorizontalPadding,
         child: SafeArea(
           child: StreamBuilder<QuerySnapshot>(
-            stream: ref.watch(accountSteamStateProvider),
+            stream: accountStream,
             builder: (context, snapshot) {
               if (snapshot.hasError) {
                 return const Text('Something went wrong');
@@ -51,14 +56,8 @@ class _AccountsViewState extends ConsumerState<AccountsView> {
                         height: 100,
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
-                          color: Color(
-                            int.parse(
-                              accountData[index]['account-background-color']
-                                  .toString()
-                                  .split('Color(')[1]
-                                  .split(')')[0],
-                            ),
-                          ),
+                          color: accountBackgroundColoWidget(
+                              accountData: accountData, index: index),
                           borderRadius: BorderRadius.circular(5),
                         ),
                         child: Row(
@@ -68,12 +67,8 @@ class _AccountsViewState extends ConsumerState<AccountsView> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Icon(
-                                    IconData(
-                                      accountData[index]
-                                          ['account-icon-code-point'],
-                                      fontFamily: _kFontFam,
-                                      fontPackage: _kFontPkg,
-                                    ),
+                                    accountIconDataWidget(
+                                        accountData: accountData, index: index),
                                     size: 30,
                                     color: CoreConstant.colorWhite,
                                   ),
