@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:wiser/features/authentication/services/authentication_set_default_account_data.dart';
@@ -22,7 +23,16 @@ Future signInWithGoogle() async {
     // Once signed in, return the UserCredential
     return await FirebaseAuth.instance
         .signInWithCredential(credential)
-        .then((value) => setDefaultAccountData());
+        .then((value) async {
+      QuerySnapshot querySnapshot = await FirebaseFirestore.instance
+          .collection('users')
+          .doc(FirebaseAuth.instance.currentUser!.uid)
+          .collection('accounts')
+          .get();
+      if (querySnapshot.docs.isEmpty) {
+        setDefaultAccountData();
+      }
+    });
   } catch (error) {
     log('Error signing in with Google: $error');
     rethrow;
