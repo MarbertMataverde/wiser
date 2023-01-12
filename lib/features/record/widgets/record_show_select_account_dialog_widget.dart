@@ -2,11 +2,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:intl/intl.dart';
 import 'package:wiser/core/constant/core_constant.dart';
-import 'package:wiser/core/widgets/core_account_background_color_widget.dart';
-import 'package:wiser/core/widgets/core_account_icon_data_widget.dart';
+import 'package:wiser/core/helper/core_converted_background_color_helper.dart';
+import 'package:wiser/core/helper/core_converted_icon_data_helper.dart';
+
 import 'package:wiser/core/widgets/core_loading_animation_widget.dart';
 import 'package:wiser/features/record/view/new_record_view.dart';
 
@@ -93,8 +93,11 @@ class _NewAccountDialogContentState
                           height: 80,
                           alignment: Alignment.center,
                           decoration: BoxDecoration(
-                            color: accountBackgroundColoWidget(
-                                accountData: accountData, index: index),
+                            color: coreConvertedBackgroundColorHelper(
+                              snapshotData: accountData,
+                              snapshotFieldName: 'account-background-color',
+                              index: index,
+                            ),
                             borderRadius: BorderRadius.circular(5),
                           ),
                           child: Row(
@@ -104,9 +107,12 @@ class _NewAccountDialogContentState
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Icon(
-                                      accountIconDataWidget(
-                                          accountData: accountData,
-                                          index: index),
+                                      coreConvertedIconDataHelper(
+                                        snapshotData: accountData,
+                                        snapshotFieldName:
+                                            'account-icon-code-point',
+                                        index: index,
+                                      ),
                                       size: 30,
                                       color: CoreConstant.colorWhite,
                                     ),

@@ -5,7 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:wiser/core/constant/core_constant.dart';
 import 'package:wiser/features/dashboard/widgets/dashboard_account_list_widget.dart';
 import 'package:wiser/features/dashboard/widgets/dashboard_summary_card_widget.dart';
-import 'package:wiser/features/dashboard/widgets/dashboard_transaction_card_widget.dart';
+import 'package:wiser/features/dashboard/widgets/dashboard_record_list_widget.dart';
 
 class DashboardView extends ConsumerStatefulWidget {
   const DashboardView({super.key});
@@ -42,7 +42,7 @@ class _DashboardState extends ConsumerState<DashboardView> {
                   fontWeight: FontWeight.w500,
                 ),
               ),
-              dashboardAccountsListWidget(
+              dashboardAccountListWidget(
                 ref: ref,
                 accountStream: accountStream,
               ),
@@ -53,7 +53,7 @@ class _DashboardState extends ConsumerState<DashboardView> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   const Text(
-                    'Transactions',
+                    'Records',
                     style: TextStyle(
                       fontWeight: FontWeight.w500,
                     ),
@@ -67,14 +67,7 @@ class _DashboardState extends ConsumerState<DashboardView> {
                   ),
                 ],
               ),
-              Expanded(
-                child: ListView.builder(
-                  itemCount: 10,
-                  itemBuilder: (context, index) {
-                    return transactionCardWidget();
-                  },
-                ),
-              )
+              dashboardRecordListWidget(),
             ],
           ),
         ),
