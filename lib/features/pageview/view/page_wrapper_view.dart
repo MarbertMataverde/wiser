@@ -62,7 +62,7 @@ class _DashboardState extends ConsumerState<PageViewWrapperView> {
             } else if (value == 1) {
               ref
                   .read(initialAppBarTitleStateProvider.notifier)
-                  .update((state) => 'Transactions');
+                  .update((state) => 'Records');
             } else if (value == 2) {
               ref
                   .read(initialAppBarTitleStateProvider.notifier)
