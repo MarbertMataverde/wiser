@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:wiser/core/constant/core_constant.dart';
+import 'package:wiser/core/helper/core_amount_formatter_helper.dart';
 import 'package:wiser/core/validator/validator.dart';
 import 'package:wiser/core/widgets/core_button_widget.dart';
 import 'package:wiser/core/widgets/core_loading_animation_widget.dart';
@@ -185,21 +186,17 @@ class _NewAccountDialogContentState
                           .read(isAddingNewAccountStateProvider.notifier)
                           .update((state) => true);
                       await newAccount(
-                        context: context,
-                        currentUserUid: FirebaseAuth.instance.currentUser!.uid,
-                        accountBackgroundColor: ref
-                            .read(accountBackgroundColorStateProvider)
-                            .toString(),
-                        accountIconCodePoint:
-                            ref.read(accountIconDataStateProvider)!.codePoint,
-                        accountName: accountName.text,
-                        accountInitalAmount: int.parse(
-                          // this removes the peso sign and commas
-                          accountInitalAmount.text
-                              .split('₱')[1]
-                              .replaceAll(',', ''),
-                        ),
-                      );
+                          context: context,
+                          currentUserUid:
+                              FirebaseAuth.instance.currentUser!.uid,
+                          accountBackgroundColor: ref
+                              .read(accountBackgroundColorStateProvider)
+                              .toString(),
+                          accountIconCodePoint:
+                              ref.read(accountIconDataStateProvider)!.codePoint,
+                          accountName: accountName.text,
+                          accountInitalAmount: coreAmountFormatter(
+                              textEditingController: accountInitalAmount));
                     }
                     ref
                         .read(isAddingNewAccountStateProvider.notifier)

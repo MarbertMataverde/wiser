@@ -102,6 +102,9 @@ class CoreConstant {
   static const Color incomeCategoryColor = Color(0xFF36C640);
   static const Color othersCategoryColor = Color(0xFF3A3A3A);
 
+  // account cash color
+  static const Color accountCashColor = Color(0xff008A64);
+
   static const List<Color> categoryColorList = [
     primaryColor,
     Color(0xffDE9CE6),

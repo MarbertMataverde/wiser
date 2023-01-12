@@ -5,6 +5,7 @@ Align coreButtonWidget({
   required BuildContext context,
   required Function()? onPressed,
   required String label,
+  customBackgroundColor,
 }) {
   return Align(
     alignment: Alignment.center,
@@ -16,8 +17,8 @@ Align coreButtonWidget({
         style: ButtonStyle(
           overlayColor: MaterialStateColor.resolveWith(
               (states) => CoreConstant.fillColor.withOpacity(0.10)),
-          backgroundColor: MaterialStateColor.resolveWith(
-              (states) => Theme.of(context).primaryColor),
+          backgroundColor: MaterialStateColor.resolveWith((states) =>
+              customBackgroundColor ?? Theme.of(context).primaryColor),
         ),
         child: Text(
           label,
