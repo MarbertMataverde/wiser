@@ -41,6 +41,11 @@ Future<void> createAccount({
           context: context,
           title: 'No Internet Connection',
           content: CoreConstant.networkRequestFailedMessage);
+    } else if (error.toString() == CoreConstant.emailAlreadyInUse) {
+      coreShowCustomDialogWidget(
+          context: context,
+          title: 'Email Already In Use',
+          content: CoreConstant.emailAlreadyInUseMessage);
     } else {
       coreShowCustomDialogWidget(
           context: context,
