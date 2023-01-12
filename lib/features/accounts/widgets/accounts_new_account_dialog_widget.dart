@@ -195,7 +195,7 @@ class _NewAccountDialogContentState
                           accountIconCodePoint:
                               ref.read(accountIconDataStateProvider)!.codePoint,
                           accountName: accountName.text,
-                          accountInitalAmount: coreAmountFormatter(
+                          accountInitalAmount: coreAmountFormatterHelper(
                               textEditingController: accountInitalAmount));
                     }
                     ref

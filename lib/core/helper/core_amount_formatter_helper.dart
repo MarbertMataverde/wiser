@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-int coreAmountFormatter({
+int coreAmountFormatterHelper({
   required TextEditingController textEditingController,
 }) {
   return int.parse(

@@ -1,8 +1,5 @@
-import 'dart:developer';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:currency_text_input_formatter/currency_text_input_formatter.dart';
-import 'package:enefty_icons/enefty_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -238,14 +235,15 @@ class _NewRecordState extends ConsumerState<NewRecordView> {
                           recordType: ref.read(isIncomeStateProvider)
                               ? 'Income'
                               : 'Expense',
-                          recordAmount: coreAmountFormatter(
+                          recordAmount: coreAmountFormatterHelper(
                               textEditingController: amount),
                           recordCategoryName:
                               ref.read(selectedCategoryTitleStateProvider),
-                          recordIconCodePoint:
-                              ref.read(selectedAccountIconDataStateProvider),
-                          recordIconBackgroundColor: ref
-                              .read(selectedAccountColorStateProvider)
+                          recordCategoryIconCodePoint: ref
+                              .read(selectedCategoryIconDataStateProvider)
+                              .codePoint,
+                          recordCategoryIconBackgroundColor: ref
+                              .read(selectedCategoryColorStateProvider)
                               .toString(),
                           recordDate: Timestamp.fromDate(
                               ref.read(selectedDateStateProvider) as DateTime),
