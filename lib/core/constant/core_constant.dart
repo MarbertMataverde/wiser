@@ -64,6 +64,10 @@ class CoreConstant {
       'Create an account to start budgeting with Wiser today!';
   static const String createAccountSuccessMessage =
       'Your account has been successfully created! You can now log in to your account.';
+  static const String emailAlreadyInUse =
+      '[firebase_auth/email-already-in-use] The email address is already in use by another account.';
+  static const String emailAlreadyInUseMessage =
+      'That email is already registered in our database try reseting your password or use different email.';
 
   // assets path
   static const String googleLogoAssetPath = 'assets/images/logo/google.svg';
@@ -76,53 +80,84 @@ class CoreConstant {
   static const String doneAssetPath = 'assets/images/rive_animation/done.riv';
   static const String loadingAssetPath =
       'assets/images/rive_animation/loading.riv';
+  static const String emptyRecordAssetPath =
+      'assets/images/gif/empty_record.riv';
 
   // Wiser colors
   static const Color colorWhite = Colors.white;
   static Color fillColor = Colors.white.withOpacity(0.5);
-  static const Color primaryColor = Color(0xff91A0EA);
+  static const Color primaryColor = Color(0xFF809bce);
   static const Color scaffoldBackgroundColor = Color(0xffEBEBEB);
   static const Color bodyColor = Color(0xFF4B4B4B);
   static const Color greyColor = Color.fromARGB(255, 186, 186, 186);
   static const Color errorColor = Color(0xFFEA9191);
-  static const Color greenColor = Color.fromARGB(255, 110, 214, 141);
-  static const Color redColor = Color.fromARGB(255, 234, 135, 135);
+  static const Color greenColor = Color(0xFF84C28C);
+  static const Color redColor = Color(0xFFf08080);
   static Color overlayColor = const Color(0xff91A0EA).withOpacity(0.20);
 
   // Category Colors
-  static const Color foodAndDrinksCategoryColor = Color(0xFFFFB444);
-  static const Color shoppingCategoryColor = Color(0xFF44DAFF);
-  static const Color housingCategoryColor = Color(0xFFFF4A44);
-  static const Color transportationCategoryColor = Color(0xFF727272);
-  static const Color vehicleCategoryColor = Color(0xFF6644FF);
-  static const Color lifeAndEntertainmentCategoryColor = Color(0xFF44FF7C);
-  static const Color communicationPCCategoryColor = Color(0xFF4744FF);
-  static const Color financialExpensesCategoryColor = Color(0xFFBF2525);
-  static const Color invesmentsCategoryColor = Color(0xFFAC1EAA);
-  static const Color incomeCategoryColor = Color(0xFF36C640);
-  static const Color othersCategoryColor = Color(0xFF3A3A3A);
+  static const Color foodAndDrinksCategoryColor = Color(0xFFf6ac69);
+  static const Color shoppingCategoryColor = Color(0xFF809bce);
+  static const Color housingCategoryColor = Color(0xFFf6bc66);
+  static const Color transportationCategoryColor = Color(0xFFB8B8B8);
+  static const Color vehicleCategoryColor = Color(0xFF9cadce);
+  static const Color lifeAndEntertainmentCategoryColor = Color(0xFFffc09f);
+  static const Color communicationPCCategoryColor = Color(0xFF52b2cf);
+  static const Color financialExpensesCategoryColor = Color(0xFFDF6C6E);
+  static const Color invesmentsCategoryColor = Color(0xFF9FBDBD);
+  static const Color incomeCategoryColor = Color(0xFF8CD494);
+  static const Color othersCategoryColor = Color(0xFFd3ab9e);
 
   // account cash color
-  static const Color accountCashColor = Color(0xff008A64);
+  static const Color accountCashColor = Color(0xFF69AC71);
 
   static const List<Color> categoryColorList = [
-    primaryColor,
-    Color(0xffDE9CE6),
-    Color(0xffFF9CC7),
-    Color(0xffFFAD9A),
-    Color(0xffFFD074),
-    Color(0xff968CDA),
-    Color(0xff9B77C6),
-    Color(0xffA061B0),
-    Color(0xffA24B97),
-    Color(0xffA1317B),
-    Color(0xffEB878F),
-    Color(0xff3F908D),
-    Color(0xff008A64),
-    Color(0xffF3875B),
-    Color(0xffA1317B),
-    Color(0xff006462),
-    Color(0xffBE90F0),
+    Color(0xffd4afb9),
+    Color(0xffffa69e),
+    Color(0xff9cadce),
+    Color(0xff7ec4cf),
+    Color(0xffe8d1c5),
+    Color(0xffffc09f),
+    Color(0xffa0ced9),
+    Color(0xff84dcc6),
+    Color(0xff809bce),
+    Color(0xfff6ac69),
+    Color(0xffea9ab2),
+    Color(0xff9cadce),
+    Color(0xff95b8d1),
+    Color(0xff68b6ef),
+    Color(0xffb8e0d2),
+    Color(0xffeac4d5),
+    Color(0xffd4afb9),
+    Color(0xffd1cfe2),
+    Color(0xff7ec4cf),
+    Color(0xff84dcc6),
+    Color(0xff52b2cf),
+    Color(0xffabc4ff),
+    Color(0xffff8fab),
+    Color(0xfffb6f92),
+    Color(0xff79addc),
+    Color(0xffffc09f),
+    Color(0xffff686b),
+    Color(0xffffafcc),
+    Color(0xff65cbe9),
+    Color(0xff52b2cf),
+    Color(0xfff68c70),
+    Color(0xff6c8dfa),
+    Color(0xff65cbe9),
+    Color(0xff68b6ef),
+    Color(0xff6c8dfa),
+    Color(0xffe27396),
+    Color(0xfff55c7a),
+    Color(0xfff57c73),
+    Color(0xfff6bc66),
+    Color(0xfff08080),
+    Color(0xfff4978e),
+    Color(0xfff8ad9d),
+    Color(0xfffbc4ab),
+    Color(0xffcdb4db),
+    Color(0xffa7bed3),
+    Color(0xffffcaaf),
   ];
 
   //regex patterm

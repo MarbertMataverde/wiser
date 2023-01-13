@@ -28,10 +28,10 @@ dependencies:
   enefty_icons: ^1.0.3
   stacked_card_carousel: ^0.0.4
   cloud_firestore: ^4.3.1
-  intl: ^0.17.0
+  intl: ^0.18.0
 
 dependency_overrides:
-  intl: ^0.17.0
+  intl: ^0.18.0
 
 dev_dependencies:
   flutter_test:
@@ -64,6 +64,7 @@ flutter:
     - assets/images/onboarding/
     - assets/images/logo/
     - assets/images/rive_animation/
+    - assets/images/gif/
 
   fonts:
     - family: Poppins
