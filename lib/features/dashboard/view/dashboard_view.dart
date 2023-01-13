@@ -1,5 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:wiser/core/constant/core_constant.dart';
@@ -15,13 +13,6 @@ class DashboardView extends ConsumerStatefulWidget {
 }
 
 class _DashboardState extends ConsumerState<DashboardView> {
-  final Stream<QuerySnapshot> accountStream = FirebaseFirestore.instance
-      .collection('users')
-      .doc(FirebaseAuth.instance.currentUser!.uid)
-      .collection('accounts')
-      .orderBy('account-create-date', descending: false)
-      .snapshots();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,30 +33,15 @@ class _DashboardState extends ConsumerState<DashboardView> {
                   fontWeight: FontWeight.w500,
                 ),
               ),
-              dashboardAccountListWidget(
-                ref: ref,
-                accountStream: accountStream,
-              ),
+              dashboardAccountListWidget(ref: ref),
               const SizedBox(
                 height: 10,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text(
-                    'Records',
-                    style: TextStyle(
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () {},
-                    child: const Text(
-                      'View all',
-                      textScaleFactor: 0.8,
-                    ),
-                  ),
-                ],
+              const Text(
+                'Records',
+                style: TextStyle(
+                  fontWeight: FontWeight.w500,
+                ),
               ),
               dashboardRecordListWidget(),
             ],

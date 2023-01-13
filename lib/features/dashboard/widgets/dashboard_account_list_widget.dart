@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
@@ -9,8 +10,13 @@ import 'package:wiser/core/widgets/core_loading_animation_widget.dart';
 
 dashboardAccountListWidget({
   required WidgetRef ref,
-  required Stream<QuerySnapshot<Object?>>? accountStream,
 }) {
+  final Stream<QuerySnapshot> accountStream = FirebaseFirestore.instance
+      .collection('users')
+      .doc(FirebaseAuth.instance.currentUser!.uid)
+      .collection('accounts')
+      .orderBy('account-create-date', descending: false)
+      .snapshots();
   return StreamBuilder<QuerySnapshot>(
     stream: accountStream,
     builder: (context, snapshot) {
