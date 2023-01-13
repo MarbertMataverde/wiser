@@ -239,6 +239,8 @@ class _NewRecordState extends ConsumerState<NewRecordView> {
                               textEditingController: amount),
                           recordCategoryName:
                               ref.read(selectedCategoryTitleStateProvider),
+                          recordAccountName:
+                              ref.read(selectedAccountNameStateProvider),
                           recordCategoryIconCodePoint: ref
                               .read(selectedCategoryIconDataStateProvider)
                               .codePoint,
