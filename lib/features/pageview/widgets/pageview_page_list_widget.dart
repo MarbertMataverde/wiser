@@ -7,7 +7,7 @@ import 'package:wiser/features/calendar/view/calendar_view.dart';
 
 const List<Widget> pageList = <Widget>[
   DashboardView(),
-  TransactionsView(),
+  RecordView(),
   BudgetView(),
   AccountsView(),
   WisedarView(),
