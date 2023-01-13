@@ -31,9 +31,8 @@ SizedBox dashboardSummaryCardWidget(BuildContext context) {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                dashboardIncomeExpensesCardWidget(value: '3,456.00'),
-                dashboardIncomeExpensesCardWidget(
-                    value: '2,345.00', isIncome: false)
+                dashboardIncomeExpensesCardWidget(),
+                dashboardIncomeExpensesCardWidget(isIncome: false)
               ],
             ),
             coreNewRecordButtonWidget(context)

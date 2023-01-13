@@ -23,7 +23,7 @@ class _DashboardState extends ConsumerState<DashboardView> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              dashboardSummaryCardWidget(context),
+              SingleChildScrollView(child: dashboardSummaryCardWidget(context)),
               const SizedBox(
                 height: 10,
               ),
