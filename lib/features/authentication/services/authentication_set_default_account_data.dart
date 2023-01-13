@@ -11,7 +11,7 @@ Future<void> setDefaultAccountData() async {
     'account-name': 'Cash',
     'account-initial-amount': 0,
     'account-icon-code-point': 60473,
-    'account-background-color': 'Color(0xff008a64)',
+    'account-background-color': 'Color(0xFF69AC71)',
     'account-create-date': Timestamp.now()
   });
 }
