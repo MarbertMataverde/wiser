@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:enefty_icons/enefty_icons.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:wiser/core/constant/core_constant.dart';
 import 'package:wiser/core/widgets/core_loading_animation_widget.dart';
 
@@ -32,9 +33,9 @@ dashboardIncomeExpensesCardWidget({
         return coreLoadingAnimationWidget();
       }
       final recordData = snapshot.data!.docs;
-      double sum = 0.0;
+      double incomeAndExpenseSum = 0.0;
       for (var i = 0; i < recordData.length; i++) {
-        sum += (recordData[i]['record-amount']);
+        incomeAndExpenseSum += (recordData[i]['record-amount']);
       }
       return Expanded(
         child: Row(
@@ -69,12 +70,18 @@ dashboardIncomeExpensesCardWidget({
                     color: CoreConstant.greyColor,
                   ),
                 ),
-                FittedBox(
-                  child: Text(
-                    '₱ $sum',
-                    style: const TextStyle(
-                      fontWeight: FontWeight.w600,
-                    ),
+                Text(
+                  NumberFormat.currency(
+                    locale: 'en_ph',
+                    symbol: '₱',
+                    decimalDigits: 0,
+                  ).format(
+                    incomeAndExpenseSum,
+                  ),
+                  overflow: TextOverflow.ellipsis,
+                  softWrap: false,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
               ],
