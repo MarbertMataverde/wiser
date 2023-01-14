@@ -29,5 +29,27 @@ Future<void> newRecord({
     'record-date': recordDate,
     'record-time': recordTime,
     'record-notes': notes,
-  }).then((value) => Navigator.pop(context));
+  }).then((value) async {
+    await FirebaseFirestore.instance
+        .collection('users')
+        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .collection('accounts')
+        .where('account-name', isEqualTo: recordAccountName)
+        .get()
+        .then((accountData) async {
+      if (accountData.docs.isNotEmpty) {
+        var recentAccountAmount = accountData.docs[0]['account-initial-amount'];
+        int incomeCalculation =
+            int.parse(recentAccountAmount.toString()) + recordAmount;
+        int expenseCalculation =
+            int.parse(recentAccountAmount.toString()) - recordAmount;
+        for (var doc in accountData.docs) {
+          doc.reference.update({
+            'account-initial-amount':
+                recordType == 'Income' ? incomeCalculation : expenseCalculation,
+          });
+        }
+      }
+    });
+  });
 }
