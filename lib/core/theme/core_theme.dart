@@ -5,9 +5,9 @@ final ThemeData wiserThemeData = ThemeData.light().copyWith(
   scaffoldBackgroundColor: CoreConstant.scaffoldBackgroundColor,
   colorScheme: ThemeData().colorScheme.copyWith(
         primary: CoreConstant.primaryColor,
+        error: CoreConstant.errorColor,
       ),
   primaryColor: CoreConstant.primaryColor,
-  errorColor: CoreConstant.errorColor,
   textTheme: ThemeData.light().textTheme.apply(
         fontFamily: 'Poppins',
         bodyColor: CoreConstant.bodyColor,

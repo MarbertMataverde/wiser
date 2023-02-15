@@ -7,7 +7,7 @@ final passwordVisibilityStateProvider = StateProvider<bool>((ref) => true);
 
 TextFormField coreTextFormFieldWidget({
   required BuildContext context,
-  required String hintText,
+  String? hintText,
   String? Function(String?)? validator,
   required TextEditingController controller,
   TextInputType? keyboardType,
