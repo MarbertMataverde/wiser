@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "789994417782-tcgbih1ct63l2eu3lh3sgu4i3ssnnm6j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "me.wiser",
+            "certificate_hash": "627eab74fead1a3defdd055845db8559317f4bf7"
+          }
+        },
+        {
           "client_id": "789994417782-nl4btjns8du2i7fb7h51k4qfvjovsec5.apps.googleusercontent.com",
           "client_type": 3
         }

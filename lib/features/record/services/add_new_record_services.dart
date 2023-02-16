@@ -50,6 +50,6 @@ Future<void> newRecord({
           });
         }
       }
-    });
+    }).whenComplete(() => Navigator.pop(context));
   });
 }
