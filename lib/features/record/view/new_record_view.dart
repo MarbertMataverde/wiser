@@ -230,6 +230,7 @@ class _NewRecordState extends ConsumerState<NewRecordView> {
                           ),
                         );
                       } else {
+                        
                         newRecord(
                           context: context,
                           recordType: ref.read(isIncomeStateProvider)
