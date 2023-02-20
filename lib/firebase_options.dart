@@ -17,15 +17,24 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      return web;
+      throw UnsupportedError(
+        'DefaultFirebaseOptions have not been configured for web - '
+        'you can reconfigure this by running the FlutterFire CLI again.',
+      );
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
-        return ios;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for ios - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.macOS:
-        return macos;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for macos - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -43,43 +52,11 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyAAzWUzs_-OTA1VfjKkgu9NKkXkEQuYGbA',
-    appId: '1:789994417782:web:6e72ff1b5b7e624f713957',
-    messagingSenderId: '789994417782',
-    projectId: 'wiser-d49c2',
-    authDomain: 'wiser-d49c2.firebaseapp.com',
-    storageBucket: 'wiser-d49c2.appspot.com',
-    measurementId: 'G-XWFTCGPQG4',
-  );
-
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyB0VuRhNiSe-WTeCyVPF7GbNrQTj66nDwM',
     appId: '1:789994417782:android:813b4c9ef80f3a68713957',
     messagingSenderId: '789994417782',
     projectId: 'wiser-d49c2',
     storageBucket: 'wiser-d49c2.appspot.com',
-  );
-
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyC60enCloD-oM8rh9G3Y2YWoR1T6r-5t_k',
-    appId: '1:789994417782:ios:0fe222c151312db6713957',
-    messagingSenderId: '789994417782',
-    projectId: 'wiser-d49c2',
-    storageBucket: 'wiser-d49c2.appspot.com',
-    androidClientId: '789994417782-tcgbih1ct63l2eu3lh3sgu4i3ssnnm6j.apps.googleusercontent.com',
-    iosClientId: '789994417782-ssegok7rm36hlo8r5j2bprk694giub4v.apps.googleusercontent.com',
-    iosBundleId: 'com.example.wiser',
-  );
-
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyC60enCloD-oM8rh9G3Y2YWoR1T6r-5t_k',
-    appId: '1:789994417782:ios:0fe222c151312db6713957',
-    messagingSenderId: '789994417782',
-    projectId: 'wiser-d49c2',
-    storageBucket: 'wiser-d49c2.appspot.com',
-    androidClientId: '789994417782-tcgbih1ct63l2eu3lh3sgu4i3ssnnm6j.apps.googleusercontent.com',
-    iosClientId: '789994417782-ssegok7rm36hlo8r5j2bprk694giub4v.apps.googleusercontent.com',
-    iosBundleId: 'com.example.wiser',
   );
 }
