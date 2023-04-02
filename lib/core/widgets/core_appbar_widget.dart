@@ -10,6 +10,7 @@ AppBar coreAppBarWidget({
   String nonPageWrapperAppbarTitle = 'Add Title',
   Function()? actionsOnPressed,
   Widget? leadingWidget,
+  List<Widget>? customActions,
 }) {
   return AppBar(
     automaticallyImplyLeading: false,
@@ -22,10 +23,11 @@ AppBar coreAppBarWidget({
           : nonPageWrapperAppbarTitle,
       style: TextStyle(color: Theme.of(context).primaryColor),
     ),
-    actions: [
-      isWrapperAppbar
-          ? coreIconButtonWidget(actionsOnPressed: actionsOnPressed)
-          : Container(),
-    ],
+    actions: customActions ??
+        [
+          isWrapperAppbar
+              ? coreIconButtonWidget(actionsOnPressed: actionsOnPressed)
+              : Container(),
+        ],
   );
 }

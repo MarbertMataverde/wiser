@@ -58,6 +58,8 @@ class _AccountsViewState extends ConsumerState<AccountsView> {
                           MaterialPageRoute(
                             builder: (context) => AccountsEditAccountView(
                               accountName: accountData[index]['account-name'],
+                              accountInitialAmount: accountData[index]
+                                  ['account-initial-amount'],
                             ),
                           ),
                         );

@@ -19,10 +19,12 @@ TextFormField coreTextFormFieldWidget({
   Color? customCursorColor,
   Color? customHintColor,
   int? customMaxLine,
+  bool? isEnabled,
   Function()? suffixIconOnPressed,
   Function(String)? onChanged,
 }) {
   return TextFormField(
+    enabled: isEnabled ?? true,
     textAlign: isHintCentered ? TextAlign.center : TextAlign.start,
     maxLines: customMaxLine ?? 1,
     onChanged: validator,

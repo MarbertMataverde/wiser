@@ -5,13 +5,14 @@ import 'package:wiser/core/constant/core_constant.dart';
 IconButton coreIconButtonWidget({
   required Function()? actionsOnPressed,
   IconData? iconData,
+  Color? iconColor,
 }) {
   return IconButton(
     splashRadius: 23,
     onPressed: actionsOnPressed,
     icon: Icon(
       iconData ?? Iconsax.setting,
-      color: CoreConstant.bodyColor,
+      color: iconColor ?? CoreConstant.bodyColor,
     ),
   );
 }
