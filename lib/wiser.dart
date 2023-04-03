@@ -1,12 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:wiser/core/layout/responsive_layout.dart';
 import 'package:wiser/features/authentication/login/view/login_view.dart';
 import 'package:wiser/features/pageview/view/page_wrapper_view.dart';
 import 'package:wiser/core/theme/core_theme.dart';
-import 'package:wiser/layout%20tester/desktop_size.dart';
-import 'package:wiser/layout%20tester/phone_size.dart';
-import 'package:wiser/layout%20tester/tablet_size.dart';
 
 class WiserApp extends StatelessWidget {
   const WiserApp({super.key});
@@ -18,11 +14,7 @@ class WiserApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: wiserThemeData,
       themeMode: ThemeMode.light,
-      home: const ResponsiveLayout(
-        phone: PhoneSize(),
-        tablet: TabletSize(),
-        desktop: DesktopSize(),
-      ),
+      home: const WiserHome(),
     );
   }
 }
