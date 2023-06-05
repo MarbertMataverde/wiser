@@ -3,9 +3,9 @@ import 'package:rive/rive.dart';
 import 'package:wiser/core/constant/core_constant.dart';
 
 Column dashboardRecordListReplacement() {
-  return Column(
+  return const Column(
     mainAxisAlignment: MainAxisAlignment.center,
-    children: const [
+    children: [
       Expanded(
         flex: 2,
         child: RiveAnimation.asset(
