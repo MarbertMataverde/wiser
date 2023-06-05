@@ -16,6 +16,7 @@ import 'package:wiser/core/validator/validator.dart';
 import 'package:wiser/features/authentication/login/widgets/login_widgets.dart';
 import 'package:wiser/features/authentication/reset_password/view/reset_password_view.dart';
 
+/// The widget responsible for displaying the phone login view.
 class PhoneLoginView extends StatelessWidget {
   PhoneLoginView({Key? key}) : super(key: key);
 
@@ -28,6 +29,7 @@ class PhoneLoginView extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
+          // Background animation
           const RiveAnimation.asset(
             CoreConstant.shapesAssetPath,
             alignment: Alignment.bottomCenter,
@@ -46,6 +48,7 @@ class PhoneLoginView extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    // Tagline widget
                     loginTaglineWidget(context),
                     const SizedBox(
                       height: 40,
@@ -54,7 +57,7 @@ class PhoneLoginView extends StatelessWidget {
                       key: _formKey,
                       child: Column(
                         children: [
-                          // email address textfield
+                          // Email address textfield
                           coreTextFormFieldWidget(
                             context: context,
                             controller: email,
@@ -65,40 +68,43 @@ class PhoneLoginView extends StatelessWidget {
                           const SizedBox(
                             height: 10,
                           ),
-                          // password textfield
-                          Consumer(builder: (BuildContext context,
-                              WidgetRef ref, Widget? child) {
-                            bool isPasswordHidden =
-                                ref.watch(passwordVisibilityStateProvider);
-                            return coreTextFormFieldWidget(
-                              context: context,
-                              obscureText: isPasswordHidden,
-                              controller: password,
-                              hintText: 'Password',
-                              suffixIcon: isPasswordHidden
-                                  ? Iconsax.eye_slash
-                                  : Iconsax.eye,
-                              suffixIconOnPressed: () {
-                                ref
-                                    .read(passwordVisibilityStateProvider
-                                        .notifier)
-                                    .update((state) => !isPasswordHidden);
-                              },
-                              validator: (value) {
-                                if (value!.isEmpty) {
-                                  return 'Please enter an password';
-                                }
-                                return null;
-                              },
-                              keyboardType: TextInputType.visiblePassword,
-                            );
-                          }),
+                          // Password textfield
+                          Consumer(
+                            builder: (BuildContext context, WidgetRef ref,
+                                Widget? child) {
+                              bool isPasswordHidden =
+                                  ref.watch(passwordVisibilityStateProvider);
+                              return coreTextFormFieldWidget(
+                                context: context,
+                                obscureText: isPasswordHidden,
+                                controller: password,
+                                hintText: 'Password',
+                                suffixIcon: isPasswordHidden
+                                    ? Iconsax.eye_slash
+                                    : Iconsax.eye,
+                                suffixIconOnPressed: () {
+                                  ref
+                                      .read(passwordVisibilityStateProvider
+                                          .notifier)
+                                      .update((state) => !isPasswordHidden);
+                                },
+                                validator: (value) {
+                                  if (value!.isEmpty) {
+                                    return 'Please enter a password';
+                                  }
+                                  return null;
+                                },
+                                keyboardType: TextInputType.visiblePassword,
+                              );
+                            },
+                          ),
                         ],
                       ),
                     ),
                     const SizedBox(
                       height: 3,
                     ),
+                    // Reset password widget
                     resetPasswordWidget(
                       context: context,
                       onTap: () => Navigator.push(
@@ -111,32 +117,35 @@ class PhoneLoginView extends StatelessWidget {
                     const SizedBox(
                       height: 20,
                     ),
-                    Consumer(builder:
-                        (BuildContext context, WidgetRef ref, Widget? child) {
-                      final isLoading = ref.watch(authenticatingStateProvider);
-                      return isLoading
-                          ? coreLoadingAnimationWidget()
-                          : coreButtonWidget(
-                              context: context,
-                              label: 'LOGIN',
-                              onPressed: () async {
-                                if (_formKey.currentState!.validate()) {
-                                  ref
-                                      .read(
-                                          authenticatingStateProvider.notifier)
-                                      .update((state) => !isLoading);
-                                  await signInWithEmailAndPassword(
-                                    context: context,
-                                    email: email.text,
-                                    password: password.text,
-                                  );
-                                  ref.invalidate(authenticatingStateProvider);
-                                } else {
-                                  // form is invalid, show an error message
-                                }
-                              },
-                            );
-                    }),
+                    Consumer(
+                      builder:
+                          (BuildContext context, WidgetRef ref, Widget? child) {
+                        final isLoading =
+                            ref.watch(authenticatingStateProvider);
+                        return isLoading
+                            ? coreLoadingAnimationWidget()
+                            : coreButtonWidget(
+                                context: context,
+                                label: 'LOGIN',
+                                onPressed: () async {
+                                  if (_formKey.currentState!.validate()) {
+                                    ref
+                                        .read(authenticatingStateProvider
+                                            .notifier)
+                                        .update((state) => !isLoading);
+                                    await signInWithEmailAndPassword(
+                                      context: context,
+                                      email: email.text,
+                                      password: password.text,
+                                    );
+                                    ref.invalidate(authenticatingStateProvider);
+                                  } else {
+                                    // Form is invalid, show an error message
+                                  }
+                                },
+                              );
+                      },
+                    ),
                     const SizedBox(
                       height: 50,
                     ),
