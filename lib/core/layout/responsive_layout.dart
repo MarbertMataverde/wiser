@@ -1,6 +1,6 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
+/// A responsive layout widget that adapts its child based on the screen size.
 class ResponsiveLayout extends StatelessWidget {
   const ResponsiveLayout({
     Key? key,
@@ -17,11 +17,16 @@ class ResponsiveLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints constraints) {
+        // If the screen width is less than or equal to 480, display the phone widget.
         if (constraints.maxWidth <= 480) {
           return phone;
-        } else if (constraints.maxWidth > 480 && constraints.maxWidth <= 768) {
+        }
+        // If the screen width is greater than 480 and less than or equal to 1080, display the tablet widget.
+        else if (constraints.maxWidth > 480 && constraints.maxWidth <= 1080) {
           return tablet;
-        } else {
+        }
+        // For screen width greater than 1080, display the desktop widget.
+        else {
           return desktop;
         }
       },
