@@ -16,8 +16,8 @@ import 'package:wiser/core/validator/validator.dart';
 import 'package:wiser/features/authentication/login/widgets/login_widgets.dart';
 import 'package:wiser/features/authentication/reset_password/view/reset_password_view.dart';
 
-class Login extends StatelessWidget {
-  Login({Key? key}) : super(key: key);
+class PhoneLoginView extends StatelessWidget {
+  PhoneLoginView({Key? key}) : super(key: key);
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController email = TextEditingController();

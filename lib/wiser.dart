@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:wiser/features/authentication/login/view/login_view.dart';
+import 'package:wiser/features/authentication/login/view/phone/login_view.dart';
 import 'package:wiser/features/pageview/view/page_wrapper_view.dart';
 import 'package:wiser/core/theme/core_theme.dart';
 
@@ -34,7 +34,7 @@ class WiserHome extends StatelessWidget {
         } else if (snapshot.hasData) {
           return const PageViewWrapperView(); // home screen
         } else {
-          return Login();
+          return PhoneLoginView();
         }
       },
     );
