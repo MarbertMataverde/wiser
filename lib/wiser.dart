@@ -28,9 +28,9 @@ class WiserHome extends StatelessWidget {
       stream: FirebaseAuth.instance.authStateChanges(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Container(); // loading
+          return _buildLoadingWidget(); // loading
         } else if (snapshot.hasError) {
-          return Container(); // restart the app message
+          return _buildErrorMessageWidget(); // restart the app message
         } else if (snapshot.hasData) {
           return const PageViewWrapperView(); // home screen
         } else {
@@ -38,5 +38,13 @@ class WiserHome extends StatelessWidget {
         }
       },
     );
+  }
+
+  Widget _buildLoadingWidget() {
+    return Container(); // Replace with your loading widget
+  }
+
+  Widget _buildErrorMessageWidget() {
+    return Container(); // Replace with your error message widget
   }
 }
