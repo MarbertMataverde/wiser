@@ -34,7 +34,7 @@ class WiserHome extends StatelessWidget {
         } else if (snapshot.hasData) {
           return const PageViewWrapperView(); // home screen
         } else {
-          return PhoneLoginView();
+          return const LoginPhoneView();
         }
       },
     );

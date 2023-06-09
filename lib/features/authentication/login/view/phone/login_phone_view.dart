@@ -17,9 +17,14 @@ import 'package:wiser/features/authentication/login/widgets/login_widgets.dart';
 import 'package:wiser/features/authentication/reset_password/view/reset_password_view.dart';
 
 /// The widget responsible for displaying the phone login view.
-class PhoneLoginView extends StatelessWidget {
-  PhoneLoginView({Key? key}) : super(key: key);
+class LoginPhoneView extends StatefulWidget {
+  const LoginPhoneView({Key? key}) : super(key: key);
 
+  @override
+  LoginPhoneViewState createState() => LoginPhoneViewState();
+}
+
+class LoginPhoneViewState extends State<LoginPhoneView> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController email = TextEditingController();
   final TextEditingController password = TextEditingController();
@@ -34,6 +39,7 @@ class PhoneLoginView extends StatelessWidget {
             CoreConstant.shapesAssetPath,
             alignment: Alignment.bottomCenter,
           ),
+          // Blurred background
           BackdropFilter(
             filter: ImageFilter.blur(sigmaX: 30, sigmaY: 40),
             child: const SizedBox(
