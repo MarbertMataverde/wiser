@@ -14,11 +14,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "789994417782-tcgbih1ct63l2eu3lh3sgu4i3ssnnm6j.apps.googleusercontent.com",
+          "client_id": "789994417782-vgl4v6iul10lafg4pl60qvfug0gddc7r.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "me.wiser",
-            "certificate_hash": "627eab74fead1a3defdd055845db8559317f4bf7"
+            "certificate_hash": "ce3bdc6779c46f38117a9a327072676e75bb0e0f"
           }
         },
         {
