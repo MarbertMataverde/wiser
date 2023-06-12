@@ -143,10 +143,10 @@ class _NewAccountDialogContentState
                     context: context,
                     hintText: 'Account Name',
                     controller: accountName,
-                    customCursorColor: CoreConstant.bodyColor,
-                    customHintColor: CoreConstant.greyColor,
+                    customCursorColor: CoreConstant.primaryTextColor,
+                    customHintColor: CoreConstant.secondaryTextColor,
                     customTextStyle: const TextStyle(
-                      color: CoreConstant.bodyColor,
+                      color: CoreConstant.primaryTextColor,
                     ),
                     validator: (value) => newAccountNameValidator(value),
                   ),
@@ -155,11 +155,11 @@ class _NewAccountDialogContentState
                     context: context,
                     hintText: 'Inital Amount',
                     controller: accountInitalAmount,
-                    customCursorColor: CoreConstant.bodyColor,
-                    customHintColor: CoreConstant.greyColor,
+                    customCursorColor: CoreConstant.primaryTextColor,
+                    customHintColor: CoreConstant.secondaryTextColor,
                     keyboardType: TextInputType.number,
                     customTextStyle: const TextStyle(
-                      color: CoreConstant.bodyColor,
+                      color: CoreConstant.primaryTextColor,
                     ),
                     validator: (value) => newAccountInitalValueValidator(value),
                     inputFormater: [

@@ -25,7 +25,7 @@ Expanded coreRecordListCategoryNameAndAccountNameWidget(
           softWrap: false,
           overflow: TextOverflow.clip,
           style: const TextStyle(
-            color: CoreConstant.greyColor,
+            color: CoreConstant.secondaryTextColor,
           ),
         ),
       ],

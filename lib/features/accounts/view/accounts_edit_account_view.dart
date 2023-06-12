@@ -68,7 +68,7 @@ class AccountsEditAccountState extends ConsumerState<AccountsEditAccountView> {
                 : Iconsax.edit_2,
             iconColor: ref.watch(isEditEnableStateProvider)
                 ? CoreConstant.greenColor
-                : CoreConstant.bodyColor,
+                : CoreConstant.primaryTextColor,
             actionsOnPressed: () => ref
                 .read(isEditEnableStateProvider.notifier)
                 .update((state) => !ref.read(isEditEnableStateProvider)),

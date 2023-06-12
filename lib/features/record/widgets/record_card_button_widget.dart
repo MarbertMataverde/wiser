@@ -31,7 +31,8 @@ InkWell recordCardButtonWidget({
                     child: Container(
                       height: 40,
                       width: 40,
-                      color: iconBackgroundColor ?? CoreConstant.greyColor,
+                      color: iconBackgroundColor ??
+                          CoreConstant.secondaryTextColor,
                       child: Icon(
                         iconData,
                         color: CoreConstant.colorWhite,

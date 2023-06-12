@@ -29,7 +29,7 @@ final selectedCategoryIconDataStateProvider =
     StateProvider.autoDispose<IconData>((ref) => Iconsax.category_2);
 
 final selectedCategoryColorStateProvider =
-    StateProvider.autoDispose<Color>((ref) => CoreConstant.greyColor);
+    StateProvider.autoDispose<Color>((ref) => CoreConstant.secondaryTextColor);
 
 // account
 final selectedAccountNameStateProvider =
@@ -201,10 +201,10 @@ class _NewRecordState extends ConsumerState<NewRecordView> {
                   controller: notes,
                   customMaxLine: 4,
                   keyboardType: TextInputType.text,
-                  customCursorColor: CoreConstant.bodyColor,
-                  customHintColor: CoreConstant.greyColor,
+                  customCursorColor: CoreConstant.primaryTextColor,
+                  customHintColor: CoreConstant.secondaryTextColor,
                   customTextStyle: const TextStyle(
-                    color: CoreConstant.bodyColor,
+                    color: CoreConstant.primaryTextColor,
                   ),
                 ),
                 const SizedBox(
@@ -230,7 +230,6 @@ class _NewRecordState extends ConsumerState<NewRecordView> {
                           ),
                         );
                       } else {
-                        
                         newRecord(
                           context: context,
                           recordType: ref.read(isIncomeStateProvider)

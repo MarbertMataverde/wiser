@@ -20,7 +20,7 @@ pickAccountIcon({required WidgetRef ref, required BuildContext context}) async {
     iconPackModes: [IconPack.custom],
     customIconPack: accountsCustomIconPacks,
     searchIcon: const Icon(Iconsax.search_normal),
-    iconColor: CoreConstant.bodyColor,
+    iconColor: CoreConstant.primaryTextColor,
     title: const Text('Pick Account Icon'),
     noResultsText: 'Cant find your desired icon',
   );

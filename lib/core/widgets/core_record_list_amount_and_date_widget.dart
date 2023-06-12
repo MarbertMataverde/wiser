@@ -40,7 +40,7 @@ Column coreRecordListAmountAndDateWidget(
               ),
         textScaleFactor: 0.7,
         style: const TextStyle(
-          color: CoreConstant.greyColor,
+          color: CoreConstant.secondaryTextColor,
         ),
       ),
     ],

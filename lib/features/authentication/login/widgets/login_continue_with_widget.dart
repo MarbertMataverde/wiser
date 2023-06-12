@@ -8,7 +8,7 @@ Align continueWithWidget() {
       'Continue with',
       textScaleFactor: 0.8,
       style: TextStyle(
-        color: CoreConstant.bodyColor,
+        color: CoreConstant.primaryTextColor,
       ),
     ),
   );

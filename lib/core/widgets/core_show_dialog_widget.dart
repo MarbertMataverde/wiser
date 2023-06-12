@@ -58,7 +58,7 @@ Future<dynamic> coreShowCustomDialogWidget({
                     child: Text(
                       buttonLeftText ?? 'Dismiss',
                       style: const TextStyle(
-                        color: CoreConstant.bodyColor,
+                        color: CoreConstant.primaryTextColor,
                       ),
                     ),
                   ),

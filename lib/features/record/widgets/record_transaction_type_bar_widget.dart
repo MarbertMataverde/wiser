@@ -20,7 +20,7 @@ Row recordTransactionTypeBarWidget({
             decoration: BoxDecoration(
                 color: ref.watch(isIncomeStateProvider)
                     ? CoreConstant.greenColor
-                    : CoreConstant.greyColor,
+                    : CoreConstant.secondaryTextColor,
                 borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(5),
                   bottomLeft: Radius.circular(5),
@@ -31,7 +31,7 @@ Row recordTransactionTypeBarWidget({
                 style: TextStyle(
                   color: ref.watch(isIncomeStateProvider)
                       ? CoreConstant.colorWhite
-                      : CoreConstant.bodyColor,
+                      : CoreConstant.primaryTextColor,
                 ),
               ),
             ),
@@ -49,7 +49,7 @@ Row recordTransactionTypeBarWidget({
             height: 50,
             decoration: BoxDecoration(
               color: ref.watch(isIncomeStateProvider)
-                  ? CoreConstant.greyColor
+                  ? CoreConstant.secondaryTextColor
                   : CoreConstant.redColor,
               borderRadius: const BorderRadius.only(
                 topRight: Radius.circular(5),
@@ -61,7 +61,7 @@ Row recordTransactionTypeBarWidget({
                 'Expense',
                 style: TextStyle(
                   color: ref.watch(isIncomeStateProvider)
-                      ? CoreConstant.bodyColor
+                      ? CoreConstant.primaryTextColor
                       : CoreConstant.colorWhite,
                 ),
               ),

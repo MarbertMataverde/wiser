@@ -10,7 +10,7 @@ final ThemeData wiserThemeData = ThemeData.light().copyWith(
   primaryColor: CoreConstant.primaryColor,
   textTheme: ThemeData.light().textTheme.apply(
         fontFamily: 'Poppins',
-        bodyColor: CoreConstant.bodyColor,
+        bodyColor: CoreConstant.primaryTextColor,
       ),
   primaryTextTheme: ThemeData.light().textTheme.apply(
         fontFamily: 'Poppins',
@@ -25,6 +25,6 @@ final ThemeData wiserThemeData = ThemeData.light().copyWith(
     ),
   ),
   iconTheme: const IconThemeData(
-    color: CoreConstant.bodyColor,
+    color: CoreConstant.primaryTextColor,
   ),
 );

@@ -83,13 +83,13 @@ class CoreConstant {
   static const String emptyRecordAssetPath =
       'assets/images/gif/empty_record.riv';
 
-  // Wiser colors
+  // Wiser Light Colors
   static const Color colorWhite = Colors.white;
   static Color fillColor = Colors.white.withOpacity(0.5);
-  static const Color primaryColor = Color(0xFF809bce);
-  static const Color scaffoldBackgroundColor = Color(0xffEBEBEB);
-  static const Color bodyColor = Color(0xFF4B4B4B);
-  static const Color greyColor = Color.fromARGB(255, 186, 186, 186);
+  static const Color primaryColor = Color(0xFF333333);
+  static const Color scaffoldBackgroundColor = Color(0xffECECEC);
+  static const Color primaryTextColor = Color(0xFF333333);
+  static const Color secondaryTextColor = Color(0xFF606060);
   static const Color errorColor = Color(0xFFEA9191);
   static const Color greenColor = Color(0xFF84C28C);
   static const Color redColor = Color(0xFFf08080);

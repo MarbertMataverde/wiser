@@ -67,7 +67,7 @@ dashboardIncomeExpensesCardWidget({
                   isIncome ? 'Income' : 'Expenses',
                   textScaleFactor: 0.8,
                   style: const TextStyle(
-                    color: CoreConstant.greyColor,
+                    color: CoreConstant.secondaryTextColor,
                   ),
                 ),
                 Text(

@@ -12,7 +12,7 @@ IconButton coreIconButtonWidget({
     onPressed: actionsOnPressed,
     icon: Icon(
       iconData ?? Iconsax.setting,
-      color: iconColor ?? CoreConstant.bodyColor,
+      color: iconColor ?? CoreConstant.primaryTextColor,
     ),
   );
 }

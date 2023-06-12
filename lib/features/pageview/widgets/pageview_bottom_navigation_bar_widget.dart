@@ -13,7 +13,7 @@ BottomNavigationBar pageviewBottomNavigationBarWidget(
       backgroundColor: Colors.transparent,
       showUnselectedLabels: false,
       currentIndex: ref.watch(initialNavBarItemIdexStateProvider),
-      unselectedItemColor: CoreConstant.bodyColor,
+      unselectedItemColor: CoreConstant.primaryTextColor,
       selectedItemColor: CoreConstant.primaryColor,
       selectedIconTheme: const IconThemeData(color: CoreConstant.primaryColor),
       onTap: (value) =>
