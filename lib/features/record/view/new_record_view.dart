@@ -19,29 +19,34 @@ import 'package:wiser/features/record/widgets/record_date_picker_theme_widget.da
 import 'package:wiser/features/record/widgets/record_show_select_account_dialog_widget.dart';
 import 'package:wiser/features/record/widgets/record_transaction_type_bar_widget.dart';
 
+// Provider for tracking whether the record is income or expense
 final isIncomeStateProvider = StateProvider.autoDispose<bool>((ref) => true);
 
-// category
+// Provider for selected category title
 final selectedCategoryTitleStateProvider =
     StateProvider.autoDispose<String>((ref) => 'Category');
 
+// Provider for selected category icon
 final selectedCategoryIconDataStateProvider =
     StateProvider.autoDispose<IconData>((ref) => Iconsax.category_2);
 
+// Provider for selected category color
 final selectedCategoryColorStateProvider =
     StateProvider.autoDispose<Color>((ref) => CoreConstant.secondaryTextColor);
 
-// account
+// Provider for selected account name
 final selectedAccountNameStateProvider =
     StateProvider.autoDispose<String>((ref) => 'Cash');
 
+// Provider for selected account icon
 final selectedAccountIconDataStateProvider =
     StateProvider.autoDispose<int>((ref) => 60473); // icon data CodePoint
 
+// Provider for selected account color
 final selectedAccountColorStateProvider =
     StateProvider.autoDispose<Color>((ref) => CoreConstant.accountCashColor);
 
-// date and time
+// Provider for selected date
 final selectedDateStateProvider =
     StateProvider.autoDispose<DateTime?>((ref) => DateTime.now());
 
@@ -59,6 +64,7 @@ class _NewRecordState extends ConsumerState<NewRecordView> {
   late final TextEditingController amount;
   late final TextEditingController notes;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
   @override
   void initState() {
     super.initState();
@@ -91,6 +97,7 @@ class _NewRecordState extends ConsumerState<NewRecordView> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                // Widget for selecting income or expense
                 recordTransactionTypeBarWidget(ref: ref),
                 const SizedBox(
                   height: 20,
@@ -129,6 +136,7 @@ class _NewRecordState extends ConsumerState<NewRecordView> {
                 const SizedBox(
                   height: 10,
                 ),
+                // Widget for selecting category
                 recordCardButtonWidget(
                   onTap: () => Navigator.push(
                     context,
@@ -144,6 +152,7 @@ class _NewRecordState extends ConsumerState<NewRecordView> {
                 const SizedBox(
                   height: 10,
                 ),
+                // Widget for selecting account
                 recordCardButtonWidget(
                   onTap: () => showDialog(
                       context: context,
@@ -161,6 +170,7 @@ class _NewRecordState extends ConsumerState<NewRecordView> {
                 const SizedBox(
                   height: 10,
                 ),
+                // Widget for selecting date
                 recordCardButtonWidget(
                   onTap: () async {
                     DateTime? selectedDate = await showDatePicker(
@@ -210,6 +220,7 @@ class _NewRecordState extends ConsumerState<NewRecordView> {
                 const SizedBox(
                   height: 10,
                 ),
+                // Button for recording the transaction
                 coreButtonWidget(
                   context: context,
                   label: ref.watch(isIncomeStateProvider)
