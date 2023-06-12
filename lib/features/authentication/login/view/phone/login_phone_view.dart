@@ -1,9 +1,6 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:rive/rive.dart';
 import 'package:wiser/core/constant/core_constant.dart';
 import 'package:wiser/core/riverpod/riverpod.dart';
 import 'package:wiser/core/widgets/core_button_widget.dart';
@@ -34,19 +31,6 @@ class LoginPhoneViewState extends State<LoginPhoneView> {
     return Scaffold(
       body: Stack(
         children: [
-          // Background animation
-          const RiveAnimation.asset(
-            CoreConstant.shapesAssetPath,
-            alignment: Alignment.bottomCenter,
-          ),
-          // Blurred background
-          BackdropFilter(
-            filter: ImageFilter.blur(sigmaX: 30, sigmaY: 40),
-            child: const SizedBox(
-              width: double.infinity,
-              height: double.infinity,
-            ),
-          ),
           SingleChildScrollView(
             child: SafeArea(
               child: Padding(
@@ -54,6 +38,9 @@ class LoginPhoneViewState extends State<LoginPhoneView> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    const SizedBox(
+                      height: 30,
+                    ),
                     // Tagline widget
                     loginTaglineWidget(context),
                     const SizedBox(
@@ -155,7 +142,16 @@ class LoginPhoneViewState extends State<LoginPhoneView> {
                     const SizedBox(
                       height: 50,
                     ),
-                    continueWithWidget(),
+                    const Align(
+                      alignment: Alignment.center,
+                      child: Text(
+                        'Continue with',
+                        textScaleFactor: 0.8,
+                        style: TextStyle(
+                          color: CoreConstant.secondaryTextColor,
+                        ),
+                      ),
+                    ),
                     const SizedBox(
                       height: 10,
                     ),
