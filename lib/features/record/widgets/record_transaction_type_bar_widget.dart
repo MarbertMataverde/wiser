@@ -20,7 +20,7 @@ Row recordTransactionTypeBarWidget({
             decoration: BoxDecoration(
                 color: ref.watch(isIncomeStateProvider)
                     ? CoreConstant.greenColor
-                    : CoreConstant.secondaryTextColor,
+                    : CoreConstant.secondaryTextColor.withOpacity(0.5),
                 borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(5),
                   bottomLeft: Radius.circular(5),
@@ -49,7 +49,7 @@ Row recordTransactionTypeBarWidget({
             height: 50,
             decoration: BoxDecoration(
               color: ref.watch(isIncomeStateProvider)
-                  ? CoreConstant.secondaryTextColor
+                  ? CoreConstant.secondaryTextColor.withOpacity(0.5)
                   : CoreConstant.redColor,
               borderRadius: const BorderRadius.only(
                 topRight: Radius.circular(5),
